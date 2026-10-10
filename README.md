@@ -6,9 +6,14 @@
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Live Demo](https://img.shields.io/badge/Demo-Vercel_Live-success.svg)](https://sidequest-three-lake.vercel.app)
+[![Demo Video](https://img.shields.io/badge/Demo_Video-Watch_MP4_(1:18)-red.svg)](sidequest-demo.mp4)
 [![AI Model](https://img.shields.io/badge/Model-CLIP_ViT--B%2F32_(Q8_ONNX)-green.svg)](https://huggingface.co/Xenova/clip-vit-base-patch32)
 [![Runtime](https://img.shields.io/badge/Runtime-ONNX_Runtime_Web_(WASM)-orange.svg)](ARCHITECTURE.md)
 [![Tests](https://img.shields.io/badge/Tests-11_passed-brightgreen.svg)](src/)
+
+---
+
+> 🎬 **Watch the 1:18 Video Demo**: [`sidequest-demo.mp4`](sidequest-demo.mp4) (Complete with neural AI voiceover, live proof verification, The Blaze filling in real-time, parent override, and Field Keepsake Journal).
 
 ---
 

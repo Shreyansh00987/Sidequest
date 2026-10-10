@@ -27,3 +27,6 @@ dist-ssr
 e2e-screenshots/
 
 .vercel
+
+.puppeteer-profile/
+demo-media/

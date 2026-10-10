@@ -1,0 +1,167 @@
+/* Sidequest Design Tokens & Theme: Modern Field Notebook & Trail Guide */
+
+:root {
+  /* Color Palette */
+  --paper: #F4EFE3;
+  --paper-card: #FAF6EE;
+  --paper-subtle: #EBE3D3;
+  --paper-sunlight: #FFFDF9;
+  --ink: #1F2A1F;
+  --ink-secondary: #405240;
+  --ink-muted: #667866;
+  --ink-faint: #92A392;
+  --blaze: #E8590C;
+  --blaze-dark: #C64600;
+  --blaze-subtle: #FDEFE7;
+  --moss: #4F6B3A;
+  --moss-dark: #3A502A;
+  --moss-subtle: #EDF3E8;
+  --dusk: #3D4A6B;
+  --dusk-subtle: #EDF1F8;
+  --border: #DCD2BF;
+  --border-strong: #1F2A1F;
+
+  /* Typography */
+  --font-heading: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Sizing & Transitions */
+  --touch-target-min: 56px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+  --transition-fast: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-elevation: 0 4px 12px rgba(31, 42, 31, 0.08), 0 1px 3px rgba(31, 42, 31, 0.04);
+}
+
+/* Daylight High Contrast Mode */
+[data-high-contrast="true"] {
+  --paper: #FFFFFF;
+  --paper-card: #FFFFFF;
+  --paper-subtle: #F0ECE1;
+  --ink: #000000;
+  --ink-secondary: #1A1A1A;
+  --ink-muted: #333333;
+  --border: #000000;
+  --border-strong: #000000;
+}
+
+/* Browser Surfaces Theming */
+::selection {
+  background-color: var(--blaze);
+  color: #FFFFFF;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reset & Base Elements */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--ink);
+  line-height: 1.18;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Accessible Focus Outlines */
+:focus-visible {
+  outline: 3px solid var(--blaze);
+  outline-offset: 2px;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Touch targets for outdoor usage */
+.touch-control {
+  min-height: var(--touch-target-min);
+  min-width: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+/* Field Notebook Texture Overlay */
+.notebook-page {
+  background-color: var(--paper);
+  background-image: radial-gradient(var(--border) 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+/* Trail Marker / Blaze Shapes */
+.blaze-mark {
+  width: 48px;
+  height: 72px;
+  border-radius: var(--radius-sm);
+  border: 3px solid var(--ink);
+  position: relative;
+  overflow: hidden;
+  background: var(--paper-card);
+}
+
+.blaze-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: var(--blaze);
+  transform-origin: bottom;
+  transition: transform var(--transition-fast);
+}

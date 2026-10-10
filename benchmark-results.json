@@ -1,0 +1,73 @@
+{
+  "results": [
+    {
+      "name": "Green Leaf Texture (Positive - Plant)",
+      "expected": "MATCH",
+      "actual": "MATCH",
+      "passed": true,
+      "latencyMs": 51,
+      "totalTargetMass": 0.9964442253112793,
+      "margin": 0.5459074366372079,
+      "topTarget": "fresh green foliage in sunlight",
+      "topDistractor": "indoor office furniture or carpet"
+    },
+    {
+      "name": "Rough Bark Texture (Positive - Tree Trunk)",
+      "expected": "MATCH",
+      "actual": "MATCH",
+      "passed": true,
+      "latencyMs": 43,
+      "totalTargetMass": 0.7317302250303328,
+      "margin": 0.4517373740673065,
+      "topTarget": "close up of rough brown tree bark",
+      "topDistractor": "smooth painted wall"
+    },
+    {
+      "name": "Smooth Grey Pebble (Positive - Stone)",
+      "expected": "MATCH",
+      "actual": "MATCH",
+      "passed": true,
+      "latencyMs": 43,
+      "totalTargetMass": 0.6583027876913548,
+      "margin": 0.4565272480249405,
+      "topTarget": "natural smooth grey rock",
+      "topDistractor": "a human face"
+    },
+    {
+      "name": "Car / Synthetic Red Metal (Negative - Distractor)",
+      "expected": "TRY_AGAIN",
+      "actual": "TRY_AGAIN",
+      "passed": true,
+      "latencyMs": 39,
+      "totalTargetMass": 0.004257174816302722,
+      "margin": -0.602913158480078,
+      "topTarget": "a smooth stone or pebble",
+      "topDistractor": "shiny red plastic toy or synthetic object"
+    },
+    {
+      "name": "Indoor White Wall / Surface (Negative - Distractor)",
+      "expected": "TRY_AGAIN",
+      "actual": "TRY_AGAIN",
+      "passed": true,
+      "latencyMs": 44,
+      "totalTargetMass": 0.0038976304058451205,
+      "margin": -0.6706687917467207,
+      "topTarget": "green moss growing on a rock",
+      "topDistractor": "a plain white indoor wall or painted ceiling"
+    },
+    {
+      "name": "Mixed Lichen/Grey-Green Shaded Stone (Ambiguous / Boundary)",
+      "expected": "UNCERTAIN",
+      "actual": "TRY_AGAIN",
+      "passed": false,
+      "latencyMs": 35,
+      "totalTargetMass": 0.27241983264684677,
+      "margin": -0.1729792356491089,
+      "topTarget": "a smooth rounded river pebble",
+      "topDistractor": "grey concrete pavement"
+    }
+  ],
+  "passCount": 5,
+  "total": 6,
+  "avgLatency": 43
+}

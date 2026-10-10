@@ -1,4 +1,3 @@
-import React from 'react';
 import { Compass, Settings, Wifi, WifiOff, Trees } from 'lucide-react';
 
 interface HeaderProps {

@@ -80,6 +80,21 @@
   * Replaced asymmetric borders with pure `box-shadow` depth layers and eliminated layout-thrashing border transitions to maintain 60fps GPU compositing.
   * **Result**: 0 anti-patterns detected (`impeccable detect` clean pass), 11/11 Vitest tests passing, Vite PWA build in 811ms.
 
+### Milestone 9: Impeccable Craft-Floor Enforcement & Deep 3D Polish (Phase 9)
+* **Date**: 2026-10-10
+* **Status**: COMPLETED, AUDITED & ZERO ANTI-PATTERNS
+* **Details**:
+  * Enforced Impeccable Craft-Floor rules across all views (`WelcomeScreen`, `BriefingScreen`, `HuntScreen`, `ResultView`, `KeepsakeScreen`, `SettingsDrawer`, `DiagnosticModal`):
+    * **Eliminated all eyebrows/kickers above headings**: Banned AI design tells removed so `h1` and `h2` headings speak with full typographic authority.
+    * **Multi-stop physical depth system**: Replaced flat neobrutalist block shadows with authentic layered 3D tokens (`inset 0 1.5px 0.5px rgba(255,255,255,0.95)`, bottom ambient occlusion, `#C6B9A1` extrusion bevel, and soft penumbra drop shadows).
+    * **Eliminated AI side-tab tell**: Removed thick single-sided colored borders from `SettingsDrawer`.
+    * **Physical 3D Equipment Buttons**: Added `.btn-3d-blaze`, `.btn-3d-moss`, `.btn-3d-ink`, and `.btn-3d-paper` with physical `:active` mechanical compression (`translateY(3px)`).
+    * **Specimen Tokens & Plaque Medallions**: Added `.badge-3d` and `.stamp-3d` for clue numbers and stop badges, plus brass-riveted enameled trail markers (`.blaze-plate`).
+  * **Impeccable Detect Verification**: `npx impeccable detect src/` reports **0 anti-patterns (100% clean)**.
+  * **Test Verification**: All 11/11 Vitest tests pass cleanly.
+  * **Build Verification**: `npm run build` generates complete production PWA bundle in 862ms with zero TypeScript warnings.
+  * **Local Inference Verification**: `node test-inference.mjs` executes CLIP ViT-B/32 Q8 locally in 69ms with 98.4% top prediction.
+
 ---
 
 ## Definition of Done Verification Checklist

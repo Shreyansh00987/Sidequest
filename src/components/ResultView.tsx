@@ -26,7 +26,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
   return (
     <div className="max-w-md mx-auto px-4 py-6 space-y-6">
       {/* Proof Photo & Signature Blaze Header */}
-      <div className="relative rounded overflow-hidden border-2 border-[var(--ink)] shadow-md bg-black max-h-72 flex items-center justify-center">
+      <div className="relative rounded-2xl overflow-hidden border-2 border-[var(--ink)] shadow-[0_4px_0_#141C14,0_12px_24px_rgba(31,42,31,0.2)] bg-black max-h-72 flex items-center justify-center">
         <img
           src={imageDataUrl}
           alt="Outdoor proof submission"
@@ -34,7 +34,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
         />
 
         {/* Floating Blaze Badge */}
-        <div className="absolute top-3 right-3 bg-[var(--paper-sunlight)]/95 p-2 rounded shadow-md border border-[var(--ink)] flex items-center gap-2">
+        <div className="absolute top-3 right-3 bg-[var(--paper-sunlight)]/95 p-2 rounded-xl border border-[var(--border)] shadow-[0_2px_0_#C4B8A2,inset_0_1px_0_rgba(255,255,255,0.9)] flex items-center gap-2">
           <TheBlaze
             state={outcome === 'MATCH' ? 'match' : outcome === 'TRY_AGAIN' ? 'try_again' : 'uncertain'}
             contrastMargin={margin}
@@ -47,20 +47,20 @@ export const ResultView: React.FC<ResultViewProps> = ({
       {/* Outcome Specific Feedback */}
       {outcome === 'MATCH' ? (
         <section className="space-y-4">
-          <div className="p-4 rounded bg-[var(--moss-subtle)] border-2 border-[var(--moss)] space-y-2">
+          <div className="card-3d p-5 bg-gradient-to-b from-[#F3F8EF] to-[#EDF3E8] border border-[var(--moss)] shadow-[0_3px_0_#3A502A,0_8px_16px_rgba(79,107,58,0.12)] space-y-2">
             <div className="flex items-center gap-2 text-[var(--moss-dark)] font-extrabold text-lg">
               <CheckCircle2 className="w-6 h-6 text-[var(--moss)] shrink-0" />
               <span>Discovery Confirmed!</span>
             </div>
-            <p className="text-xs text-[var(--ink-secondary)] leading-relaxed">
+            <p className="text-xs text-[var(--ink-secondary)] leading-relaxed font-medium">
               The on-device model recognized your finding with high confidence ({((diagnostic?.confidenceScore || 0.8) * 100).toFixed(0)}% target evidence).
             </p>
           </div>
 
           {/* Educational Nature Field Note */}
-          <div className="p-4 rounded bg-[var(--paper-card)] border border-[var(--border)] space-y-2">
+          <div className="card-3d p-4 bg-gradient-to-b from-white to-[#FAF6EE] border border-[#DCD2BF] shadow-[0_2px_0_#C4B8A2,inset_0_1px_0_rgba(255,255,255,0.95)] space-y-2">
             <div className="flex items-center gap-2 text-xs font-bold text-[var(--dusk)] uppercase tracking-wider">
-              <BookOpen className="w-4 h-4" />
+              <BookOpen className="w-4 h-4 text-[var(--moss)]" />
               <span>Field Naturalist Note</span>
             </div>
             <p className="text-sm text-[var(--ink)] leading-relaxed italic">
@@ -78,9 +78,9 @@ export const ResultView: React.FC<ResultViewProps> = ({
         </section>
       ) : outcome === 'TRY_AGAIN' ? (
         <section className="space-y-4">
-          <div className="card-3d p-5 bg-[#FFF1ED] border-2 border-[var(--blaze)] space-y-2">
+          <div className="card-3d p-5 bg-gradient-to-b from-[#FFFDF9] to-[#FFF1ED] border border-[var(--blaze)] shadow-[0_3px_0_#C64600,0_8px_16px_rgba(232,89,12,0.12)] space-y-2">
             <div className="flex items-center gap-2 text-[var(--blaze-dark)] font-extrabold text-base">
-              <AlertCircle className="w-5 h-5 shrink-0" />
+              <AlertCircle className="w-5 h-5 shrink-0 text-[var(--blaze)]" />
               <span>Not quite what the clue asked for</span>
             </div>
             <p className="text-xs text-[var(--ink-secondary)] leading-relaxed font-medium">
@@ -109,7 +109,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
       ) : (
         /* UNCERTAIN */
         <section className="space-y-4">
-          <div className="card-3d p-5 bg-[var(--dusk-subtle)] border-2 border-[var(--dusk)] space-y-2">
+          <div className="card-3d p-5 bg-gradient-to-b from-[#FFFDF9] to-[#F1F4FA] border border-[var(--dusk)] shadow-[0_3px_0_#3D4A6B,0_8px_16px_rgba(61,74,107,0.12)] space-y-2">
             <div className="flex items-center gap-2 text-[var(--dusk)] font-extrabold text-base">
               <AlertCircle className="w-5 h-5 shrink-0" />
               <span>Uncertain Match</span>
@@ -143,9 +143,9 @@ export const ResultView: React.FC<ResultViewProps> = ({
       <div className="pt-2 text-center">
         <button
           onClick={onOpenDiagnostics}
-          className="inline-flex items-center gap-1.5 text-xs text-[var(--ink-muted)] hover:text-[var(--ink)] touch-control"
+          className="btn-3d-paper text-xs font-bold px-3.5 py-2 touch-control inline-flex items-center gap-1.5 text-[var(--ink-secondary)]"
         >
-          <Activity className="w-3.5 h-3.5" />
+          <Activity className="w-3.5 h-3.5 text-[var(--blaze)]" />
           <span>View Local Model Diagnostics</span>
         </button>
       </div>

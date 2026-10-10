@@ -90,16 +90,16 @@ export const HuntScreen: React.FC<HuntScreenProps> = ({
     <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 py-6 flex flex-col justify-between min-h-[85vh] select-none">
       {/* Top quiet control bar: Clue progress & Pause */}
       <header className="flex items-center justify-between pb-4 border-b border-[var(--border)]">
-        <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-secondary)]">
+        <span className="badge-3d text-[var(--ink-secondary)]">
           Clue {session.currentClueIndex + 1} of {clues.length}
         </span>
 
         <button
           onClick={onPauseHunt}
-          className="inline-flex items-center gap-1.5 text-xs text-[var(--ink-muted)] hover:text-[var(--ink)] touch-control"
+          className="btn-3d-paper text-xs font-bold px-3 py-1.5 touch-control flex items-center gap-1.5"
           aria-label="Pause hunt"
         >
-          <Pause className="w-4 h-4" />
+          <Pause className="w-3.5 h-3.5" />
           <span>Pause Walk</span>
         </button>
       </header>
@@ -116,22 +116,20 @@ export const HuntScreen: React.FC<HuntScreenProps> = ({
           />
         </div>
 
-        {/* The High-Contrast Outdoor Clue Text */}
-        <div className="card-3d p-6 sm:p-8 bg-[#FFFDF9] border border-[var(--ink)] shadow-[0_4px_0_#0D140D] space-y-4 text-left">
-          <div className="flex items-center justify-between text-xs font-extrabold uppercase tracking-wider text-[var(--moss-dark)]">
-            <span>Field Naturalist Clue</span>
-            <span className="font-mono bg-[var(--paper-subtle)] px-2 py-0.5 rounded border border-[var(--border)]">
+        {/* The High-Contrast Outdoor Clue Card */}
+        <div className="card-3d p-6 sm:p-8 space-y-4 text-left">
+          <div className="flex items-center justify-between gap-3">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] leading-snug tracking-tight flex-1">
+              {currentClue.prompt}
+            </h1>
+            <div className="stamp-3d w-10 h-10 text-base text-[var(--moss-dark)] shrink-0" title={`Clue #${session.currentClueIndex + 1}`}>
               #{session.currentClueIndex + 1}
-            </span>
+            </div>
           </div>
-
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] leading-snug tracking-tight">
-            {currentClue.prompt}
-          </h1>
 
           {/* Hint Disclosure */}
           {showHint ? (
-            <div className="text-xs text-[var(--moss-dark)] font-bold leading-relaxed italic bg-[var(--moss-subtle)] p-3 rounded-lg border border-[var(--moss)]">
+            <div className="text-xs text-[var(--moss-dark)] font-bold leading-relaxed italic bg-[var(--moss-subtle)] p-3.5 rounded-xl border border-[var(--moss)] shadow-[inset_0_1px_2px_rgba(79,107,58,0.15)]">
               💡 {currentClue.hint}
             </div>
           ) : (
@@ -157,9 +155,9 @@ export const HuntScreen: React.FC<HuntScreenProps> = ({
         <button
           onClick={() => setIsCameraOpen(true)}
           disabled={isVerifying}
-          className="w-full py-4 px-6 btn-3d-blaze text-lg flex items-center justify-center gap-3 touch-control shadow-lg disabled:opacity-50"
+          className="w-full py-4 px-6 btn-3d-blaze text-lg flex items-center justify-center gap-3 touch-control disabled:opacity-50"
         >
-          <Camera className="w-6 h-6" />
+          <Camera className="w-6 h-6 text-white" />
           <span>{isVerifying ? 'Analyzing Evidence...' : 'Take Proof Photo'}</span>
         </button>
       </footer>

@@ -28,57 +28,56 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
       aria-labelledby="diag-title"
     >
       <div
-        className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded p-6 shadow-xl"
+        className="w-full max-w-lg max-h-[90vh] overflow-y-auto p-6 card-3d"
         style={{
           backgroundColor: 'var(--paper-sunlight)',
-          border: '2px solid var(--ink)',
+          border: '3px solid var(--ink)',
           color: 'var(--ink)',
         }}
       >
-        <div className="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)]">
+        <div className="flex items-center justify-between pb-3 mb-4 border-b-2 border-[var(--border)]">
           <div className="flex items-center gap-2">
             <Activity className="w-5 h-5 text-[var(--dusk)]" />
-            <h2 id="diag-title" className="text-xl font-bold">
+            <h2 id="diag-title" className="text-xl font-bold tracking-tight">
               Vision Model Diagnostics
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded hover:bg-[var(--paper-subtle)] touch-control"
+            className="w-9 h-9 rounded-md flex items-center justify-center btn-3d-paper touch-control"
             aria-label="Close diagnostics"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
         <div className="space-y-4 text-sm">
           {/* Summary Banner */}
           <div
-            className="p-3 rounded flex items-center justify-between border"
+            className="p-3.5 rounded-lg flex items-center justify-between card-3d"
             style={{
               backgroundColor: 'var(--paper-card)',
-              borderColor: 'var(--border)',
             }}
           >
-            <div className="flex items-center gap-2 font-semibold text-base">
+            <div className="flex items-center gap-2 font-bold text-base">
               {outcomeIcons[diagnostic.outcome]}
               <span>Outcome: {diagnostic.outcome}</span>
             </div>
-            <span className="font-mono text-xs px-2 py-1 bg-[var(--paper-subtle)] rounded">
+            <span className="font-mono text-xs px-2.5 py-1 bg-[var(--paper-subtle)] border border-[var(--border)] rounded font-semibold">
               {diagnostic.inferenceTimeMs} ms latency
             </span>
           </div>
 
           {/* Margins and Mass */}
           <div className="grid grid-cols-2 gap-3">
-            <div className="p-3 rounded border border-[var(--border)] bg-[var(--paper-card)]">
-              <span className="text-xs text-[var(--ink-secondary)] block">Target Evidence Mass</span>
+            <div className="p-3 rounded-lg card-3d">
+              <span className="text-xs text-[var(--ink-secondary)] block font-medium">Target Evidence Mass</span>
               <span className="text-lg font-bold font-mono">
                 {(diagnostic.confidenceScore * 100).toFixed(1)}%
               </span>
             </div>
-            <div className="p-3 rounded border border-[var(--border)] bg-[var(--paper-card)]">
-              <span className="text-xs text-[var(--ink-secondary)] block">Contrast Margin (Δ)</span>
+            <div className="p-3 rounded-lg card-3d">
+              <span className="text-xs text-[var(--ink-secondary)] block font-medium">Contrast Margin (&Delta;)</span>
               <span
                 className={`text-lg font-bold font-mono ${
                   diagnostic.contrastMargin >= 0.12
@@ -96,18 +95,18 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
 
           {/* Best Matches */}
           <div className="space-y-2">
-            <div className="p-2.5 rounded bg-[var(--moss-subtle)] border border-[var(--moss)] text-xs">
+            <div className="p-3 rounded-lg card-3d bg-[var(--moss-subtle)] border-2 border-[var(--moss)] text-xs">
               <div className="font-bold text-[var(--moss)] mb-0.5">Top Target Match:</div>
-              <div className="font-mono text-ink">{diagnostic.bestMatchingTarget}</div>
-              <div className="text-[var(--ink-muted)] mt-1">
+              <div className="font-mono text-ink font-semibold">{diagnostic.bestMatchingTarget}</div>
+              <div className="text-[var(--ink-muted)] mt-1 font-mono">
                 Score: {(diagnostic.targetSimilarity * 100).toFixed(1)}%
               </div>
             </div>
 
-            <div className="p-2.5 rounded bg-[var(--paper-subtle)] border border-[var(--border)] text-xs">
+            <div className="p-3 rounded-lg card-3d text-xs">
               <div className="font-bold text-[var(--ink-secondary)] mb-0.5">Top Distractor Match:</div>
-              <div className="font-mono text-ink">{diagnostic.bestMatchingDistractor}</div>
-              <div className="text-[var(--ink-muted)] mt-1">
+              <div className="font-mono text-ink font-semibold">{diagnostic.bestMatchingDistractor}</div>
+              <div className="text-[var(--ink-muted)] mt-1 font-mono">
                 Score: {(diagnostic.distractorSimilarity * 100).toFixed(1)}%
               </div>
             </div>
@@ -148,7 +147,7 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
 
         <button
           onClick={onClose}
-          className="mt-5 w-full py-3 px-4 rounded font-bold text-center border-2 border-[var(--ink)] bg-[var(--paper-card)] hover:bg-[var(--paper-subtle)] touch-control"
+          className="mt-5 w-full py-3 px-4 rounded-xl font-bold text-center btn-3d-paper touch-control"
         >
           Dismiss Diagnostics
         </button>

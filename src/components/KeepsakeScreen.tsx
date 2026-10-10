@@ -35,7 +35,7 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
       <div className="print:hidden flex items-center justify-between pb-4 border-b border-[var(--border)]">
         <button
           onClick={onNewWalk}
-          className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[var(--ink-secondary)] hover:text-[var(--blaze)] touch-control"
+          className="btn-3d-paper text-xs font-bold px-3.5 py-2 touch-control flex items-center gap-1.5"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Start a New Walk</span>
@@ -45,7 +45,7 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
           {onDeleteHunt && (
             <button
               onClick={onDeleteHunt}
-              className="p-2 text-[var(--ink-muted)] hover:text-red-700 touch-control"
+              className="p-2.5 btn-3d-paper text-[var(--ink-muted)] hover:text-red-700 touch-control"
               title="Delete this hunt from device"
             >
               <Trash2 className="w-4 h-4" />
@@ -54,9 +54,9 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
 
           <button
             onClick={handlePrint}
-            className="py-2.5 px-4 btn-3d-paper text-xs font-extrabold flex items-center gap-2 touch-control shadow-xs"
+            className="py-2.5 px-4 btn-3d-blaze text-xs font-extrabold flex items-center gap-2 touch-control"
           >
-            <Printer className="w-4 h-4" />
+            <Printer className="w-4 h-4 text-white" />
             <span>Print Field Journal</span>
           </button>
         </div>
@@ -64,14 +64,16 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
 
       {/* Keepsake Header */}
       <header className="card-3d p-6 sm:p-8 space-y-3">
-        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--moss-dark)]">
-          <Compass className="w-4 h-4 text-[var(--moss)]" />
-          <span>Official Field Naturalist Keepsake</span>
-        </div>
-
         <h1 className="text-3xl font-extrabold text-[var(--ink)]">
           {questPack.title}
         </h1>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="badge-3d text-[var(--moss-dark)] border-[var(--moss)]">
+            <Compass className="w-3.5 h-3.5 text-[var(--moss)]" />
+            <span>Official Field Naturalist Keepsake</span>
+          </span>
+        </div>
 
         <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-[var(--ink-secondary)] pt-3 border-t border-[var(--border)]">
           <div className="flex items-center gap-1.5">
@@ -103,29 +105,29 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="space-y-1">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-muted)]">
+                  <div className="stamp-3d px-2.5 py-0.5 text-xs text-[var(--moss-dark)] font-bold">
                     Stop {proof.clueOrder}
-                  </span>
-                  <h3 className="text-lg font-bold text-[var(--ink)] leading-snug">
+                  </div>
+                  <h3 className="text-lg font-bold text-[var(--ink)] leading-snug pt-1">
                     {proof.cluePrompt}
                   </h3>
                 </div>
 
                 {proof.isAdultOverride ? (
-                  <span className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full bg-[var(--paper-subtle)] text-[var(--ink-secondary)] font-bold shrink-0 border border-[var(--border)]">
+                  <span className="badge-3d text-[var(--ink-secondary)]">
                     <UserCheck className="w-3.5 h-3.5 text-[var(--moss)]" />
                     <span>Parent Confirmed</span>
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full bg-[var(--moss-subtle)] text-[var(--moss-dark)] font-extrabold shrink-0 border border-[var(--moss)]">
+                  <span className="badge-3d text-[var(--moss-dark)] border-[var(--moss)]">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[var(--moss)]" />
                     <span>AI Verified</span>
                   </span>
                 )}
               </div>
 
-              {/* Photo Display */}
-              <div className="rounded-xl overflow-hidden border-2 border-[var(--ink)] bg-black max-h-80 flex items-center justify-center shadow-inner">
+              {/* Photo Display with 3D Specimen Bezel */}
+              <div className="rounded-xl overflow-hidden border-2 border-[var(--ink)] bg-black max-h-80 flex items-center justify-center shadow-[0_3px_0_#141C14,0_8px_16px_rgba(31,42,31,0.15)]">
                 <img
                   src={proof.imageDataUrl}
                   alt={`Proof for ${proof.cluePrompt}`}

@@ -20,8 +20,8 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-5xl mx-auto flex items-center justify-between">
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-[#F0681D] to-[#E8590C] text-white flex items-center justify-center font-bold shadow-md border border-[#C64600] shadow-[0_2px_0_#8A2B00]">
-            <Compass className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-b from-[#F0681D] via-[#E8590C] to-[#C64600] text-white flex items-center justify-center font-bold border border-[#B33E00] shadow-[0_3px_0_#8F3000,0_6px_12px_rgba(232,89,12,0.35),inset_0_1.5px_0.5px_rgba(255,255,255,0.45)]">
+            <Compass className="w-5 h-5 drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]" />
           </div>
           <div>
             <span className="font-extrabold text-base tracking-tight text-[var(--ink)] block leading-none">
@@ -38,37 +38,37 @@ export const Header: React.FC<HeaderProps> = ({
           {activeHuntTitle && onReturnToActiveHunt && (
             <button
               onClick={onReturnToActiveHunt}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-extrabold bg-[var(--moss-subtle)] text-[var(--moss-dark)] border border-[var(--moss)] touch-control shadow-xs hover:bg-[#DCEAD4]"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 btn-3d-moss text-xs font-extrabold touch-control"
             >
-              <Trees className="w-3.5 h-3.5 text-[var(--moss)]" />
+              <Trees className="w-3.5 h-3.5 text-white" />
               <span>Resume Walk</span>
             </button>
           )}
 
           {/* Network / Offline Pill */}
           <div
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold border ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border ${
               !isOnline
-                ? 'bg-amber-100 text-amber-900 border-amber-300'
+                ? 'bg-amber-100 text-amber-900 border-amber-300 shadow-[0_1.5px_0_#D97706,inset_0_1px_0_rgba(255,255,255,0.8)]'
                 : isModelCached
-                ? 'bg-[var(--moss-subtle)] text-[var(--moss-dark)] border-[var(--moss)]'
-                : 'bg-[var(--paper-subtle)] text-[var(--ink-secondary)] border-[var(--border)]'
-            } shadow-xs`}
+                ? 'bg-[var(--moss-subtle)] text-[var(--moss-dark)] border-[var(--moss)] shadow-[0_1.5px_0_#4F6B3A,inset_0_1px_0_rgba(255,255,255,0.8)]'
+                : 'bg-[var(--paper-subtle)] text-[var(--ink-secondary)] border-[var(--border)] shadow-[0_1.5px_0_#C4B8A2,inset_0_1px_0_rgba(255,255,255,0.8)]'
+            }`}
             title={!isOnline ? 'Operating offline' : isModelCached ? 'Model cached for offline' : 'Online'}
           >
             {!isOnline ? (
               <>
-                <WifiOff className="w-3 h-3 text-amber-700" />
+                <WifiOff className="w-3.5 h-3.5 text-amber-700" />
                 <span className="text-[11px]">Offline</span>
               </>
             ) : isModelCached ? (
               <>
-                <Wifi className="w-3 h-3 text-[var(--moss)]" />
+                <Wifi className="w-3.5 h-3.5 text-[var(--moss)]" />
                 <span className="text-[11px]">Ready Offline</span>
               </>
             ) : (
               <>
-                <Wifi className="w-3 h-3 text-[var(--ink-muted)]" />
+                <Wifi className="w-3.5 h-3.5 text-[var(--ink-muted)]" />
                 <span className="text-[11px]">Online</span>
               </>
             )}
@@ -77,7 +77,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Settings Trigger */}
           <button
             onClick={onOpenSettings}
-            className="p-2 rounded-lg border border-[var(--border)] bg-[var(--paper-sunlight)] hover:bg-[var(--paper-subtle)] text-[var(--ink-secondary)] touch-control shadow-xs"
+            className="p-2 btn-3d-paper text-[var(--ink-secondary)] touch-control"
             aria-label="Settings and Privacy"
           >
             <Settings className="w-4 h-4" />

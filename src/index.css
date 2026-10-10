@@ -167,140 +167,230 @@ input, textarea, select {
   background-size: 100% 100%, 22px 22px;
 }
 
-/* 3D Tactile Paper Cards (Pressed field guide aesthetic) */
+/* 3D Tactile Paper Cards (Physical Field Guide Specimen Aesthetic) */
 .card-3d {
-  background-color: var(--paper-card);
-  border: 1px solid #D8CEBC;
-  border-radius: 12px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF6EE 100%);
+  border: 1px solid #DCD2BF;
+  border-radius: 14px;
   box-shadow: 
-    0 4px 0 #C4B8A2,
-    0 8px 16px rgba(31, 42, 31, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 150ms cubic-bezier(0.16, 1, 0.3, 1), border-color 150ms ease;
+    0 1px 2px rgba(31, 42, 31, 0.04),
+    0 4px 0 #C6B9A1,
+    0 8px 20px -2px rgba(31, 42, 31, 0.08),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(31, 42, 31, 0.03);
+  transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 140ms cubic-bezier(0.16, 1, 0.3, 1), border-color 140ms ease;
+  position: relative;
 }
 
 .card-3d:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: 
-    0 6px 0 #BAAE98,
-    0 12px 22px rgba(31, 42, 31, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  border-color: #CBBFA9;
+    0 1px 2px rgba(31, 42, 31, 0.04),
+    0 7px 0 #B8AA91,
+    0 14px 28px -4px rgba(31, 42, 31, 0.12),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 1),
+    inset 0 -1px 2px rgba(31, 42, 31, 0.03);
+  border-color: #C8BB9E;
 }
 
 .card-3d:active {
-  transform: translateY(2px);
+  transform: translateY(3px);
   box-shadow: 
-    0 2px 0 #C4B8A2,
-    0 4px 8px rgba(31, 42, 31, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    0 1px 0 #C6B9A1,
+    0 3px 8px -1px rgba(31, 42, 31, 0.06),
+    inset 0 1px 0.5px rgba(255, 255, 255, 0.85);
 }
 
-/* 3D Tactile Buttons (Physical outdoor gear click feel) */
+/* 3D Tactile Buttons (Authentic Outdoor Equipment Feel) */
 .btn-3d-blaze {
-  background: linear-gradient(180deg, #F0681D 0%, #E8590C 100%);
+  background: linear-gradient(180deg, #F0681D 0%, #E8590C 50%, #DC4F04 100%);
   color: #FFFFFF !important;
-  border: 1px solid #C64600;
-  border-radius: 10px;
+  border: 1px solid #B83E00;
+  border-radius: 12px;
   box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.1),
     0 4px 0 #8F3000,
-    0 6px 14px rgba(232, 89, 12, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    0 8px 18px rgba(232, 89, 12, 0.32),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.45),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.2);
   font-weight: 800;
   cursor: pointer;
   touch-action: manipulation;
-  transition: transform 100ms ease, box-shadow 100ms ease;
+  transition: transform 100ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 100ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-3d-blaze:hover {
-  background: linear-gradient(180deg, #F87326 0%, #EE5E11 100%);
+  background: linear-gradient(180deg, #F87326 0%, #EE5E11 50%, #E45508 100%);
+  transform: translateY(-2px);
   box-shadow: 
-    0 5px 0 #8F3000,
-    0 8px 18px rgba(232, 89, 12, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.45);
-  transform: translateY(-1px);
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 6px 0 #8F3000,
+    0 12px 24px rgba(232, 89, 12, 0.4),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.55),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.2);
 }
 
 .btn-3d-blaze:active {
   transform: translateY(3px);
   box-shadow: 
     0 1px 0 #8F3000,
-    0 2px 4px rgba(232, 89, 12, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 2px 6px rgba(232, 89, 12, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn-3d-moss {
+  background: linear-gradient(180deg, #5B7B43 0%, #4F6B3A 50%, #435D30 100%);
+  color: #FFFFFF !important;
+  border: 1px solid #324722;
+  border-radius: 12px;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 4px 0 #233417,
+    0 8px 18px rgba(79, 107, 58, 0.28),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.4),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 100ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 100ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-3d-moss:hover {
+  background: linear-gradient(180deg, #668A4B 0%, #577640 50%, #4A6736 100%);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 6px 0 #233417,
+    0 12px 24px rgba(79, 107, 58, 0.36),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.5),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d-moss:active {
+  transform: translateY(3px);
+  box-shadow: 
+    0 1px 0 #233417,
+    0 2px 6px rgba(79, 107, 58, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btn-3d-ink {
   background: linear-gradient(180deg, #2D3D2D 0%, #1F2A1F 100%);
   color: #FFFFFF !important;
   border: 1px solid #141C14;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 
-    0 4px 0 #0A0F0A,
-    0 4px 10px rgba(31, 42, 31, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 4px 0 #0E140E,
+    0 6px 14px rgba(31, 42, 31, 0.25),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.25),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.25);
   font-weight: 700;
   cursor: pointer;
   touch-action: manipulation;
-  transition: transform 100ms ease, box-shadow 100ms ease;
+  transition: transform 100ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 100ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-3d-ink:hover {
+  background: linear-gradient(180deg, #374A37 0%, #273527 100%);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 6px 0 #0E140E,
+    0 10px 20px rgba(31, 42, 31, 0.3),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.35);
 }
 
 .btn-3d-ink:active {
-  transform: translateY(2px);
+  transform: translateY(3px);
   box-shadow: 
-    0 2px 0 #0A0F0A,
+    0 1px 0 #0E140E,
     0 2px 4px rgba(31, 42, 31, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .btn-3d-paper {
-  background: linear-gradient(180deg, #FFFDF9 0%, #FAF6EE 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF6EE 100%);
   color: var(--ink);
   border: 1px solid #D6CAAF;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 
-    0 3px 0 #BFB194,
-    0 3px 8px rgba(31, 42, 31, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 1px 2px rgba(31, 42, 31, 0.04),
+    0 3px 0 #C4B8A2,
+    0 4px 10px rgba(31, 42, 31, 0.06),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(31, 42, 31, 0.04);
   cursor: pointer;
   touch-action: manipulation;
-  transition: transform 100ms ease, box-shadow 100ms ease;
+  transition: transform 100ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 100ms cubic-bezier(0.16, 1, 0.3, 1), background-color 100ms ease;
 }
 
 .btn-3d-paper:hover {
   background: #FFFFFF;
   border-color: #C8BB9E;
+  transform: translateY(-2px);
   box-shadow: 
-    0 4px 0 #B5A78A,
-    0 5px 10px rgba(31, 42, 31, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  transform: translateY(-1px);
+    0 1px 2px rgba(31, 42, 31, 0.04),
+    0 5px 0 #B8AA91,
+    0 8px 16px rgba(31, 42, 31, 0.08),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 1);
 }
 
 .btn-3d-paper:active {
   transform: translateY(2px);
   box-shadow: 
-    0 1px 0 #BFB194,
-    0 1px 4px rgba(31, 42, 31, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    0 1px 0 #C4B8A2,
+    0 2px 4px rgba(31, 42, 31, 0.04),
+    inset 0 1px 0.5px rgba(255, 255, 255, 0.85);
 }
 
-/* Stamped Physical Trail Badges */
-.badge-stamp {
-  border: 1.5px solid currentColor;
+/* 3D Tactile Badges & Chips */
+.badge-3d {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF6EE 100%);
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    0 1px 2px rgba(31, 42, 31, 0.04);
+    0 1.5px 0 #C4B8A2,
+    0 2px 5px rgba(31, 42, 31, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* 3D Specimen Number Stamp */
+.stamp-3d {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1.5px solid var(--ink);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF6EE 100%);
+  box-shadow: 
+    0 2px 0 var(--ink),
+    0 3px 6px rgba(31, 42, 31, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  font-family: var(--font-mono);
+  font-weight: 800;
 }
 
 /* Trail Marker / Blaze 3D Enamel Effect */
 .blaze-plate {
-  border-radius: 6px;
+  border-radius: 8px;
   border: 2px solid #1F2A1F;
   background: linear-gradient(180deg, #FFFFFF 0%, #FAF6EE 100%);
   box-shadow: 
-    0 3px 0 #0E140E,
-    0 5px 12px rgba(31, 42, 31, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 2px 4px rgba(31, 42, 31, 0.08),
+    0 5px 0 #0E140E,
+    0 12px 24px rgba(31, 42, 31, 0.2),
+    inset 0 2px 3px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 4px rgba(31, 42, 31, 0.12);
+  position: relative;
 }
 
 .blaze-fill {

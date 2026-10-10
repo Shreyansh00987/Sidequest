@@ -32,17 +32,6 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         <header className="lg:col-span-7 card-3d p-6 sm:p-8 flex flex-col justify-between space-y-4">
           <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--blaze-subtle)] text-[var(--blaze-dark)] border border-[var(--blaze)]">
-                <Compass className="w-3.5 h-3.5" />
-                <span>Outdoor Nature Companion</span>
-              </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-[var(--moss-subtle)] text-[var(--moss-dark)] border border-[var(--moss)]">
-                <Sparkles className="w-3 h-3" />
-                <span>Open AI</span>
-              </span>
-            </div>
-
             <div>
               <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--ink)] tracking-tight leading-tight">
                 Sidequest
@@ -52,23 +41,34 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               </p>
             </div>
 
-            <p className="text-sm text-[var(--ink-secondary)] leading-relaxed">
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <span className="badge-3d text-[var(--blaze-dark)] border-[var(--blaze)]">
+                <Compass className="w-3.5 h-3.5 text-[var(--blaze)]" />
+                <span>Outdoor Nature Companion</span>
+              </span>
+              <span className="badge-3d text-[var(--moss-dark)] border-[var(--moss)]">
+                <Sparkles className="w-3.5 h-3.5 text-[var(--moss)]" />
+                <span>Open AI ONNX</span>
+              </span>
+            </div>
+
+            <p className="text-sm text-[var(--ink-secondary)] leading-relaxed pt-1">
               Help children notice the living world. The phone gives one poetic nature clue, then deliberately gets out of the way. Children explore, photograph their discovery, and on-device AI verifies it without sending any photos to the cloud.
             </p>
           </div>
 
-          {/* 3 Steps Visual Strip */}
-          <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[var(--border)] text-center text-xs">
-            <div className="p-2.5 rounded bg-[var(--paper-sunlight)] border border-[var(--border)]">
-              <span className="font-extrabold text-[var(--ink)] block">1. Read Clue</span>
+          {/* 3 Steps Visual Strip with Tactile 3D Mini-Plates */}
+          <div className="grid grid-cols-3 gap-2.5 pt-3 border-t border-[var(--border)] text-center text-xs">
+            <div className="p-3 rounded-xl bg-gradient-to-b from-white to-[#FAF6EE] border border-[#DCD2BF] shadow-[0_2px_0_#C4B8A2,inset_0_1px_0_rgba(255,255,255,0.9)]">
+              <span className="font-extrabold text-[var(--ink)] block text-xs">1. Read Clue</span>
               <span className="text-[11px] text-[var(--ink-muted)]">Put phone away</span>
             </div>
-            <div className="p-2.5 rounded bg-[var(--paper-sunlight)] border border-[var(--border)]">
-              <span className="font-extrabold text-[var(--ink)] block">2. Find Nature</span>
+            <div className="p-3 rounded-xl bg-gradient-to-b from-white to-[#FAF6EE] border border-[#DCD2BF] shadow-[0_2px_0_#C4B8A2,inset_0_1px_0_rgba(255,255,255,0.9)]">
+              <span className="font-extrabold text-[var(--ink)] block text-xs">2. Find Nature</span>
               <span className="text-[11px] text-[var(--ink-muted)]">Observe & discover</span>
             </div>
-            <div className="p-2.5 rounded bg-[var(--paper-sunlight)] border border-[var(--border)]">
-              <span className="font-extrabold text-[var(--ink)] block">3. Local AI Proof</span>
+            <div className="p-3 rounded-xl bg-gradient-to-b from-white to-[#FAF6EE] border border-[#DCD2BF] shadow-[0_2px_0_#C4B8A2,inset_0_1px_0_rgba(255,255,255,0.9)]">
+              <span className="font-extrabold text-[var(--ink)] block text-xs">3. Local AI Proof</span>
               <span className="text-[11px] text-[var(--ink-muted)]">100% private verifier</span>
             </div>
           </div>
@@ -78,30 +78,29 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         <section
           className="lg:col-span-5 card-3d p-6 flex flex-col justify-between space-y-4"
           style={{
-            backgroundColor: 'var(--paper-sunlight)',
             borderColor: isModelReady ? 'var(--moss)' : 'var(--border)',
           }}
         >
-          <div className="space-y-2">
+          <div className="space-y-3">
             <div className="flex items-start justify-between gap-3">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[var(--moss)] animate-pulse" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[var(--moss)] animate-pulse shadow-[0_0_8px_rgba(79,107,58,0.6)]" />
                   <span className="font-extrabold text-sm text-[var(--ink)]">On-Device Vision Model</span>
                 </div>
-                <span className="inline-block text-[11px] px-2 py-0.5 rounded font-mono bg-[var(--paper-subtle)] text-[var(--ink-secondary)] font-semibold">
+                <span className="inline-block text-[11px] px-2 py-0.5 rounded font-mono bg-[var(--paper-subtle)] text-[var(--ink-secondary)] font-semibold border border-[var(--border)] shadow-[inset_0_1px_1px_rgba(0,0,0,0.05)]">
                   clip-vit-base (Q8 ONNX)
                 </span>
               </div>
 
               {isModelReady ? (
-                <span className="inline-flex items-center gap-1 text-xs font-extrabold text-[var(--moss)] px-3 py-1.5 rounded-full bg-[var(--moss-subtle)] border border-[var(--moss)] shrink-0">
-                  <Check className="w-4 h-4" />
+                <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[var(--moss-dark)] px-3 py-1.5 rounded-full bg-[var(--moss-subtle)] border border-[var(--moss)] shrink-0 shadow-[0_1.5px_0_#4F6B3A,inset_0_1px_0_rgba(255,255,255,0.9)]">
+                  <Check className="w-4 h-4 text-[var(--moss)]" />
                   <span>Offline Ready</span>
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1 text-xs font-bold text-[var(--dusk)] px-2.5 py-1 rounded bg-[var(--dusk-subtle)] shrink-0">
-                  <Download className="w-4 h-4" />
+                <span className="inline-flex items-center gap-1 text-xs font-bold text-[var(--dusk)] px-2.5 py-1 rounded-full bg-[var(--dusk-subtle)] border border-[#C5D0E6] shrink-0 shadow-[0_1px_0_#A8B8D4]">
+                  <Download className="w-3.5 h-3.5" />
                   <span>~85 MB</span>
                 </span>
               )}
@@ -114,14 +113,14 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
 
           <div>
             {modelReadiness.status === 'downloading' ? (
-              <div className="space-y-1.5 pt-2">
+              <div className="space-y-2 pt-2">
                 <div className="flex justify-between text-xs text-[var(--ink-secondary)] font-medium">
                   <span>Caching model weights into browser storage...</span>
                   <span className="font-mono font-bold text-[var(--blaze)]">{modelReadiness.progressPercent}%</span>
                 </div>
-                <div className="w-full h-2.5 rounded-full bg-[var(--paper-subtle)] overflow-hidden p-0.5 border border-[var(--border)]">
+                <div className="w-full h-3 rounded-full bg-[var(--paper-subtle)] overflow-hidden p-0.5 border border-[var(--border)] shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]">
                   <div
-                    className="h-full bg-[var(--blaze)] rounded-full transition-all duration-300"
+                    className="h-full bg-gradient-to-r from-[#F0681D] to-[#E8590C] rounded-full transition-all duration-300 shadow-[0_1px_2px_rgba(232,89,12,0.4)]"
                     style={{ width: `${modelReadiness.progressPercent}%` }}
                   />
                 </div>
@@ -129,13 +128,13 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             ) : !isModelReady ? (
               <button
                 onClick={onPreloadModel}
-                className="w-full py-3 px-4 btn-3d-paper flex items-center justify-center gap-2 touch-control font-extrabold text-xs shadow-xs"
+                className="w-full py-3.5 px-4 btn-3d-blaze flex items-center justify-center gap-2 touch-control font-extrabold text-xs"
               >
-                <Download className="w-4 h-4 text-[var(--blaze)]" />
+                <Download className="w-4 h-4 text-white" />
                 <span>Prepare Offline (Recommended)</span>
               </button>
             ) : (
-              <div className="flex items-center gap-2 text-xs font-semibold text-[var(--moss-dark)] bg-[var(--moss-subtle)] p-2.5 rounded-lg border border-[var(--moss)]">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[var(--moss-dark)] bg-[var(--moss-subtle)] p-3 rounded-xl border border-[var(--moss)] shadow-[0_2px_0_#4F6B3A,inset_0_1px_0_rgba(255,255,255,0.9)]">
                 <WifiOff className="w-4 h-4 text-[var(--moss)] shrink-0" />
                 <span>Model cached in browser. 100% offline ready!</span>
               </div>
@@ -223,7 +222,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               <div className="flex items-start justify-between gap-3">
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2">
-                    <span className="p-1.5 rounded-md bg-[var(--moss-subtle)] text-[var(--moss)] border border-[var(--moss)]">
+                    <span className="p-2 rounded-lg bg-[var(--moss-subtle)] text-[var(--moss)] border border-[var(--moss)] shadow-[0_1.5px_0_#4F6B3A,inset_0_1px_0_rgba(255,255,255,0.8)]">
                       <Trees className="w-4 h-4" />
                     </span>
                     <h3 className="font-extrabold text-lg text-[var(--ink)] group-hover:text-[var(--blaze)] transition-colors">
@@ -234,7 +233,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                     {pack.subtitle}
                   </p>
                 </div>
-                <div className="w-9 h-9 rounded-full border-2 border-[var(--border)] flex items-center justify-center shrink-0 group-hover:bg-[var(--blaze)] group-hover:border-[var(--blaze)] group-hover:text-white transition-all">
+                <div className="w-9 h-9 rounded-full border border-[var(--border)] bg-gradient-to-b from-white to-[#FAF6EE] shadow-[0_2px_0_#C4B8A2,inset_0_1px_0_rgba(255,255,255,0.9)] flex items-center justify-center shrink-0 group-hover:bg-[var(--blaze)] group-hover:border-[#B83E00] group-hover:text-white group-hover:shadow-[0_2px_0_#8F3000] transition-all">
                   <ChevronRight className="w-5 h-5" />
                 </div>
               </div>
@@ -243,18 +242,16 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 {pack.description}
               </p>
 
-              <div className="flex flex-wrap items-center gap-3 mt-4 pt-3 border-t border-[var(--border)] text-xs font-semibold text-[var(--ink-secondary)]">
-                <span className="inline-flex items-center gap-1">
+              <div className="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-[var(--border)] text-xs font-semibold text-[var(--ink-secondary)]">
+                <span className="badge-3d text-[var(--ink-secondary)]">
                   <Clock className="w-3.5 h-3.5 text-[var(--ink-muted)]" />
-                  <span>~{pack.estimatedMinutes} mins</span>
+                  <span>~{pack.estimatedMinutes}m</span>
                 </span>
-                <span>•</span>
-                <span className="inline-flex items-center gap-1">
+                <span className="badge-3d text-[var(--ink-secondary)]">
                   <Users className="w-3.5 h-3.5 text-[var(--ink-muted)]" />
                   <span>Ages {pack.recommendedAge === 'all' ? 'All ages' : pack.recommendedAge}</span>
                 </span>
-                <span>•</span>
-                <span className="inline-flex items-center gap-1">
+                <span className="badge-3d text-[var(--moss-dark)] border-[var(--moss)]">
                   <MapPin className="w-3.5 h-3.5 text-[var(--moss)]" />
                   <span>5 field clues</span>
                 </span>
@@ -265,7 +262,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
       </section>
 
       {/* Child Privacy & Safety Callout */}
-      <footer className="p-4 rounded-xl bg-[var(--paper-subtle)] border-2 border-[var(--border)] flex items-start gap-3 text-xs text-[var(--ink-secondary)] leading-relaxed shadow-xs">
+      <footer className="p-4 rounded-xl bg-gradient-to-b from-white to-[#FAF6EE] border border-[#DCD2BF] shadow-[0_2px_0_#C4B8A2,inset_0_1px_0_rgba(255,255,255,0.9)] flex items-start gap-3 text-xs text-[var(--ink-secondary)] leading-relaxed">
         <ShieldCheck className="w-5 h-5 text-[var(--moss)] shrink-0 mt-0.5" />
         <div>
           <span className="font-extrabold text-[var(--ink)]">Supervised, Safe & Private: </span>

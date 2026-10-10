@@ -2,6 +2,11 @@
   "name": "sidequest",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://sidequest-three-lake.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shreyansh00987/Sidequest.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",

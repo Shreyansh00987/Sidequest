@@ -4,16 +4,21 @@
 > *An outdoor nature scavenger-hunt companion powered by open-weight on-device AI.*  
 > Built for the **Touch Grass** Open-Source AI Hackathon.
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-[![Live Demo](https://img.shields.io/badge/Demo-Vercel_Live-success.svg)](https://sidequest-three-lake.vercel.app)
-[![Demo Video](https://img.shields.io/badge/Demo_Video-Watch_MP4_(1:18)-red.svg)](sidequest-demo.mp4)
-[![AI Model](https://img.shields.io/badge/Model-CLIP_ViT--B%2F32_(Q8_ONNX)-green.svg)](https://huggingface.co/Xenova/clip-vit-base-patch32)
-[![Runtime](https://img.shields.io/badge/Runtime-ONNX_Runtime_Web_(WASM)-orange.svg)](ARCHITECTURE.md)
-[![Tests](https://img.shields.io/badge/Tests-11_passed-brightgreen.svg)](src/)
+---
+
+### 🌐 Quick Links & Live Deployment
+* 🚀 **Live Hosted App**: **[https://sidequest-three-lake.vercel.app](https://sidequest-three-lake.vercel.app)** *(Deployed on Vercel)*
+* 🎬 **1:18 Video Demo**: **[`sidequest-demo.mp4`](sidequest-demo.mp4)** *(Neural AI voiceover & full feature walkthrough)*
+* 💻 **GitHub Repository**: **[https://github.com/Shreyansh00987/Sidequest](https://github.com/Shreyansh00987/Sidequest)**
 
 ---
 
-> 🎬 **Watch the 1:18 Video Demo**: [`sidequest-demo.mp4`](sidequest-demo.mp4) (Complete with neural AI voiceover, live proof verification, The Blaze filling in real-time, parent override, and Field Keepsake Journal).
+[![Live Demo](https://img.shields.io/badge/🚀_Live_App-sidequest--three--lake.vercel.app-2ea44f?style=for-the-badge&logo=vercel)](https://sidequest-three-lake.vercel.app)
+[![Demo Video](https://img.shields.io/badge/🎬_Watch_Demo-1:18_MP4-e02424?style=for-the-badge&logo=youtube)](sidequest-demo.mp4)
+[![GitHub](https://img.shields.io/badge/Source-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/Shreyansh00987/Sidequest)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge)](LICENSE)
+[![AI Model](https://img.shields.io/badge/Model-CLIP_ViT--B%2F32_(Q8_ONNX)-green.svg?style=for-the-badge)](https://huggingface.co/Xenova/clip-vit-base-patch32)
+[![Runtime](https://img.shields.io/badge/Runtime-ONNX_Runtime_Web_(WASM)-orange.svg?style=for-the-badge)](ARCHITECTURE.md)
 
 ---
 

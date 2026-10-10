@@ -61,7 +61,6 @@ self.onmessage = async (e: MessageEvent) => {
         // Initialize zero-shot image classification pipeline with quantized weights
         classifierInstance = await pipeline('zero-shot-image-classification', modelId, {
           dtype: 'q8',
-          device: 'wasm',
           progress_callback: (progress: any) => {
             if (progress.status === 'progress' && progress.total) {
               const percent = Math.round((progress.loaded / progress.total) * 100);
@@ -115,8 +114,15 @@ self.onmessage = async (e: MessageEvent) => {
         const startTime = performance.now();
         const candidateLabels = [...targetLabels, ...distractorLabels];
 
+        // Ensure image format is compatible (convert data URL to blob if needed)
+        let imageInput = image;
+        if (typeof image === 'string' && image.startsWith('data:')) {
+          const res = await fetch(image);
+          imageInput = await res.blob();
+        }
+
         // Zero-shot evaluation using template
-        const rawResults = await classifierInstance(image, candidateLabels, {
+        const rawResults = await classifierInstance(imageInput, candidateLabels, {
           hypothesis_template: 'a photo of {}',
         });
 

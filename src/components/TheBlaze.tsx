@@ -88,7 +88,7 @@ export const TheBlaze: React.FC<TheBlazeProps> = ({
           backgroundColor: '#FFFDF8',
           boxShadow: '0 6px 14px rgba(31, 42, 31, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 3px rgba(0,0,0,0.1)',
         }}
-        className="transition-colors duration-200"
+        className="blaze-plate transition-colors duration-200"
       >
         {/* Subtle top mounting brass rivet */}
         <div

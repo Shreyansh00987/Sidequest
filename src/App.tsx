@@ -164,7 +164,9 @@ export const App: React.FC = () => {
       };
 
       if (activeSession) {
-        const updatedProofs = [...activeSession.proofs, proof];
+        const updatedProofs = activeSession.proofs.some(p => p.clueId === clue.id)
+          ? activeSession.proofs.map(p => (p.clueId === clue.id ? proof : p))
+          : [...activeSession.proofs, proof];
         const updatedSession: HuntSession = {
           ...activeSession,
           proofs: updatedProofs,
@@ -182,61 +184,60 @@ export const App: React.FC = () => {
 
   // Adult override: "Count it!"
   const handleOverrideProof = async (clue: Clue) => {
-    if (!activeSession) return;
+    setActiveSession(prev => {
+      if (!prev) return null;
+      const lastProof = prev.proofs[prev.proofs.length - 1];
+      const proof: CapturedProof = {
+        clueId: clue.id,
+        cluePrompt: clue.prompt,
+        clueOrder: clue.order,
+        imageDataUrl: lastProof?.imageDataUrl || '',
+        timestamp: Date.now(),
+        outcome: 'MATCH',
+        isAdultOverride: true,
+        diagnostic: lastProof?.diagnostic,
+        fieldNote: clue.fieldNote,
+      };
 
-    // Look for existing proof or construct parent verified proof
-    const lastProof = activeSession.proofs[activeSession.proofs.length - 1];
-    const proof: CapturedProof = {
-      clueId: clue.id,
-      cluePrompt: clue.prompt,
-      clueOrder: clue.order,
-      imageDataUrl: lastProof?.imageDataUrl || '',
-      timestamp: Date.now(),
-      outcome: 'MATCH',
-      isAdultOverride: true,
-      diagnostic: lastProof?.diagnostic,
-      fieldNote: clue.fieldNote,
-    };
+      const updatedProofs = prev.proofs.some(p => p.clueId === clue.id)
+        ? prev.proofs.map(p => (p.clueId === clue.id ? proof : p))
+        : [...prev.proofs, proof];
 
-    const updatedProofs = activeSession.proofs.some(p => p.clueId === clue.id)
-      ? activeSession.proofs.map(p => (p.clueId === clue.id ? proof : p))
-      : [...activeSession.proofs, proof];
+      const updatedSession: HuntSession = {
+        ...prev,
+        proofs: updatedProofs,
+      };
 
-    const updatedSession: HuntSession = {
-      ...activeSession,
-      proofs: updatedProofs,
-    };
-
-    setActiveSession(updatedSession);
-    await StorageService.saveHuntSession(updatedSession);
+      StorageService.saveHuntSession(updatedSession);
+      return updatedSession;
+    });
   };
 
   // Advance to next clue or finish hunt
   const handleAdvanceClue = async () => {
-    if (!activeSession) return;
+    setActiveSession(prev => {
+      if (!prev) return null;
+      const nextIndex = prev.currentClueIndex + 1;
+      const isCompleted = nextIndex >= selectedQuestPack.clues.length;
 
-    const nextIndex = activeSession.currentClueIndex + 1;
-    if (nextIndex >= selectedQuestPack.clues.length) {
-      // Completed all clues!
-      const completedSession: HuntSession = {
-        ...activeSession,
-        currentClueIndex: nextIndex,
-        completedAt: Date.now(),
-        status: 'completed',
-      };
-      setActiveSession(completedSession);
-      await StorageService.saveHuntSession(completedSession);
-      setCurrentScreen('keepsake');
-    } else {
       const updatedSession: HuntSession = {
-        ...activeSession,
+        ...prev,
         currentClueIndex: nextIndex,
+        completedAt: isCompleted ? Date.now() : prev.completedAt,
+        status: isCompleted ? 'completed' : prev.status,
       };
-      setActiveSession(updatedSession);
-      await StorageService.saveHuntSession(updatedSession);
-      setBlazeState('idle');
-      setBlazeMargin(0);
-    }
+
+      StorageService.saveHuntSession(updatedSession);
+
+      if (isCompleted) {
+        setCurrentScreen('keepsake');
+      } else {
+        setBlazeState('idle');
+        setBlazeMargin(0);
+      }
+
+      return updatedSession;
+    });
   };
 
   // Pause active hunt and return home
@@ -250,6 +251,16 @@ export const App: React.FC = () => {
     setActiveSession(null);
     setCurrentScreen('welcome');
     setIsSettingsOpen(false);
+  };
+
+  // Delete the current completed hunt session
+  const handleDeleteCurrentHunt = async () => {
+    if (!activeSession) return;
+    if (window.confirm('Delete this completed field journal from your device?')) {
+      await StorageService.deleteHuntSession(activeSession.id);
+      setActiveSession(null);
+      setCurrentScreen('welcome');
+    }
   };
 
   const handleUpdateSettings = async (newSettings: AppSettings) => {
@@ -310,6 +321,7 @@ export const App: React.FC = () => {
               setActiveSession(null);
               setCurrentScreen('welcome');
             }}
+            onDeleteHunt={handleDeleteCurrentHunt}
           />
         )}
       </div>

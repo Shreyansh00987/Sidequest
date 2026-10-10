@@ -67,6 +67,10 @@ export const StorageService = {
     await db.delete('hunts', id);
   },
 
+  async deleteHuntSession(id: string): Promise<void> {
+    return this.deleteHunt(id);
+  },
+
   async deleteAllData(): Promise<void> {
     const db = await getDb();
     const tx = db.transaction(['hunts', 'settings'], 'readwrite');

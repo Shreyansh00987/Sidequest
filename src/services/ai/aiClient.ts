@@ -33,6 +33,7 @@ class AIClient {
       });
 
       this.worker.onmessage = (e: MessageEvent) => {
+        console.log('[AIClient] Worker message received:', e.data.type, e.data);
         this.handleWorkerMessage(e.data);
       };
 
@@ -171,6 +172,7 @@ class AIClient {
         startTime: performance.now(),
       };
 
+      console.log('[AIClient] Posting VERIFY_IMAGE to worker. Clue:', clue.prompt);
       this.worker?.postMessage({
         type: 'VERIFY_IMAGE',
         payload: {

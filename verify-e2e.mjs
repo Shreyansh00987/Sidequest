@@ -47,9 +47,10 @@ async function runVerification() {
   const page = await browser.newPage();
   const consoleErrors = [];
   page.on('console', msg => {
+    const text = msg.text();
     if (msg.type() === 'error') {
-      console.log(`[BROWSER CONSOLE ERROR]: ${msg.text()}`);
-      consoleErrors.push(msg.text());
+      console.log(`[BROWSER ERROR]: ${text}`);
+      consoleErrors.push(text);
     }
   });
 
@@ -61,7 +62,8 @@ async function runVerification() {
   try {
     // 1. Visit Home
     console.log(`Step 1: Navigating to ${BASE_URL}...`);
-    await page.goto(BASE_URL, { waitUntil: 'networkidle0', timeout: 15000 });
+    await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await new Promise(r => setTimeout(r, 1000));
 
     const title = await page.title();
     console.log(`Page title: "${title}"`);
@@ -198,7 +200,7 @@ async function runVerification() {
             text.includes('Complete Hunt')
           );
         },
-        { timeout: 60000, polling: 500 }
+        { timeout: clueIdx === 1 ? 120000 : 15000, polling: 500 }
       );
 
       await new Promise(r => setTimeout(r, 500));

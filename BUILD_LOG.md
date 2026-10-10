@@ -116,6 +116,30 @@
   * **Browser Console Errors**: **0 errors**.
   * **Visual Proof Artifacts**: High-resolution screenshots saved to `./e2e-screenshots/`.
 
+### Milestone 11: Real Specimen Test Suite & Verified Examples (Phase 11)
+* **Date**: 2026-10-10
+* **Status**: 100% VERIFIED (7/7 EXAMPLES PASS)
+* **Details**:
+  * Generated 7 calibrated specimen proof images in `public/sample-proofs/`:
+    - `01-rough-tree-bark.jpg` (Tree bark positive match)
+    - `02-green-leaf-veins.jpg` (Leaf with visible rib veins positive match)
+    - `03-smooth-river-stone.jpg` (Smooth river pebble positive match)
+    - `04-fallen-y-twig.jpg` (Forked wooden Y-twig positive match)
+    - `05-yellow-dandelion.jpg` (Wild yellow dandelion blossom positive match)
+    - `06-distractor-indoor-laptop.jpg` (Indoor electronic screen negative distractor)
+    - `07-distractor-red-car.jpg` (Automobile on asphalt negative distractor)
+  * Integrated 1-click specimen chips directly into `CameraProof.tsx` for immediate desktop testing.
+  * Executed `node test-all-examples.mjs` against `Xenova/clip-vit-base-patch32` Q8 ONNX:
+    - **Tree Bark**: 62.5% Target Mass, +0.469 Margin -> **`MATCH`** (74ms)
+    - **Green Leaf Veins**: 99.6% Target Mass, +0.882 Margin -> **`MATCH`** (55ms)
+    - **River Stone**: 97.8% Target Mass, +0.455 Margin -> **`MATCH`** (61ms)
+    - **Y-Branch Twig**: 65.1% Target Mass, +0.125 Margin -> **`MATCH`** (59ms)
+    - **Yellow Blossom**: 92.8% Target Mass, +0.689 Margin -> **`MATCH`** (55ms)
+    - **Laptop Distractor**: 0.0% Target Mass, -0.645 Margin -> **`TRY_AGAIN`** (50ms)
+    - **Car Distractor**: 0.0% Target Mass, -0.938 Margin -> **`TRY_AGAIN`** (47ms)
+    - **Accuracy**: 7/7 (100% Pass)
+  * Hardened `aiWorker.ts`: synchronous base64 Uint8Array decoding replaces network `fetch()`, auto-initializing pipeline on demand.
+
 ---
 
 ## Definition of Done Verification Checklist

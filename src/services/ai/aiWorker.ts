@@ -103,22 +103,48 @@ self.onmessage = async (e: MessageEvent) => {
       const { image, targetLabels, distractorLabels } = payload;
 
       if (!classifierInstance) {
-        self.postMessage({
-          type: 'VERIFY_ERROR',
-          error: 'Model is not initialized yet',
-        });
-        return;
+        try {
+          self.postMessage({
+            type: 'MODEL_LOADING_START',
+            modelId: DEFAULT_MODEL_ID,
+          });
+          classifierInstance = await pipeline('zero-shot-image-classification', DEFAULT_MODEL_ID, {
+            dtype: 'q8',
+          });
+          currentLoadedModelId = DEFAULT_MODEL_ID;
+          self.postMessage({
+            type: 'MODEL_READY',
+            modelId: DEFAULT_MODEL_ID,
+            cached: true,
+          });
+        } catch (initErr: any) {
+          self.postMessage({
+            type: 'VERIFY_ERROR',
+            error: initErr?.message || 'Model initialization failed',
+          });
+          return;
+        }
       }
 
       try {
         const startTime = performance.now();
         const candidateLabels = [...targetLabels, ...distractorLabels];
 
-        // Ensure image format is compatible (convert data URL to blob if needed)
+        // Ensure image format is compatible (convert data URL to blob synchronously)
         let imageInput = image;
         if (typeof image === 'string' && image.startsWith('data:')) {
-          const res = await fetch(image);
-          imageInput = await res.blob();
+          try {
+            const parts = image.split(',');
+            const mime = parts[0].match(/:(.*?);/)?.[1] || 'image/jpeg';
+            const binary = atob(parts[1]);
+            const array = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) {
+              array[i] = binary.charCodeAt(i);
+            }
+            imageInput = new Blob([array], { type: mime });
+          } catch {
+            imageInput = image;
+          }
         }
 
         // Zero-shot evaluation using template

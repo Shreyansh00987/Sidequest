@@ -147,6 +147,39 @@ export const CameraProof: React.FC<CameraProofProps> = ({
     }
   };
 
+  // Quick test helper to load real sample specimen photos
+  const loadSamplePhoto = async (samplePath: string) => {
+    try {
+      const res = await fetch(samplePath);
+      const blob = await res.blob();
+      const reader = new FileReader();
+      reader.onload = event => {
+        const result = event.target?.result as string;
+        if (result) {
+          setCapturedPhotoUrl(result);
+          setCapturedBlob(blob);
+          if (stream) {
+            stream.getTracks().forEach(track => track.stop());
+            setStream(null);
+          }
+        }
+      };
+      reader.readAsDataURL(blob);
+    } catch (err) {
+      console.warn('Sample photo load error:', err);
+    }
+  };
+
+  const sampleSpecimens = [
+    { label: '🪵 Tree Bark', path: '/sample-proofs/01-rough-tree-bark.jpg' },
+    { label: '🍃 Green Leaf', path: '/sample-proofs/02-green-leaf-veins.jpg' },
+    { label: '🪨 River Stone', path: '/sample-proofs/03-smooth-river-stone.jpg' },
+    { label: '🌿 Y-Twig', path: '/sample-proofs/04-fallen-y-twig.jpg' },
+    { label: '🌼 Dandelion', path: '/sample-proofs/05-yellow-dandelion.jpg' },
+    { label: '💻 Laptop (Distractor)', path: '/sample-proofs/06-distractor-indoor-laptop.jpg' },
+    { label: '🚗 Red Car (Distractor)', path: '/sample-proofs/07-distractor-red-car.jpg' },
+  ];
+
   return (
     <div className="fixed inset-0 z-40 bg-[var(--ink)] flex flex-col justify-between text-white select-none">
       {/* Top Bar */}
@@ -160,7 +193,7 @@ export const CameraProof: React.FC<CameraProofProps> = ({
           <span>Back</span>
         </button>
 
-        <div className="text-center px-2 flex-1 max-w-xs truncate text-xs sm:text-sm text-[var(--paper)]">
+        <div className="text-center px-2 flex-1 max-w-xs truncate text-xs sm:text-sm text-[var(--paper)] font-medium">
           {cluePrompt}
         </div>
 
@@ -184,22 +217,40 @@ export const CameraProof: React.FC<CameraProofProps> = ({
               alt="Captured outdoor proof"
               className="max-h-full max-w-full object-contain"
             />
-            <div className="absolute top-4 left-4 bg-black/60 px-3 py-1.5 rounded text-xs text-white">
-              Photo Preview
+            <div className="absolute top-4 left-4 bg-black/60 px-3 py-1.5 rounded-lg text-xs text-white border border-white/20">
+              Proof Photo Preview
             </div>
           </div>
         ) : cameraError ? (
-          <div className="max-w-md p-6 text-center space-y-4 m-4 rounded bg-white/10 border border-white/20">
+          <div className="max-w-md p-6 text-center space-y-4 m-4 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm">
             <AlertCircle className="w-12 h-12 text-[var(--blaze)] mx-auto" />
             <h3 className="text-lg font-bold">Camera Unavailable</h3>
-            <p className="text-sm text-white/80 leading-relaxed">{cameraError}</p>
+            <p className="text-xs text-white/80 leading-relaxed">{cameraError}</p>
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="w-full py-3.5 px-4 rounded bg-[var(--blaze)] text-white font-bold flex items-center justify-center gap-2 touch-control hover:bg-[var(--blaze-dark)]"
+              className="w-full py-3.5 px-4 rounded-xl bg-[var(--blaze)] text-white font-bold flex items-center justify-center gap-2 touch-control hover:bg-[var(--blaze-dark)] shadow-md"
             >
               <Upload className="w-5 h-5" />
               <span>Choose Photo from Device</span>
             </button>
+
+            {/* Quick Test Demo Chips */}
+            <div className="pt-3 border-t border-white/10 space-y-2 text-left">
+              <span className="text-[11px] font-bold text-white/70 uppercase tracking-wider block">
+                Or test with sample specimen photos:
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {sampleSpecimens.map(sample => (
+                  <button
+                    key={sample.path}
+                    onClick={() => loadSamplePhoto(sample.path)}
+                    className="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-white/15 hover:bg-white/25 border border-white/20 text-white touch-control transition-all active:scale-95"
+                  >
+                    {sample.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         ) : (
           <div className="relative w-full h-full flex items-center justify-center">
@@ -232,9 +283,24 @@ export const CameraProof: React.FC<CameraProofProps> = ({
       </div>
 
       {/* Bottom Controls Bar */}
-      <footer className="p-6 bg-black/70 backdrop-blur-xs flex items-center justify-around border-t border-white/10">
+      <footer className="p-4 sm:p-6 bg-black/70 backdrop-blur-xs flex flex-col items-center gap-3 border-t border-white/10">
+        {!capturedPhotoUrl && !cameraError && (
+          <div className="w-full max-w-md overflow-x-auto pb-1 flex items-center gap-1.5 no-scrollbar justify-start sm:justify-center">
+            <span className="text-[10px] uppercase font-bold text-white/50 shrink-0">Demo:</span>
+            {sampleSpecimens.map(sample => (
+              <button
+                key={sample.path}
+                onClick={() => loadSamplePhoto(sample.path)}
+                className="px-2 py-1 rounded text-[11px] font-semibold bg-white/10 hover:bg-white/20 border border-white/15 text-white/90 shrink-0 touch-control active:scale-95 transition-all"
+              >
+                {sample.label}
+              </button>
+            ))}
+          </div>
+        )}
+
         {capturedPhotoUrl ? (
-          <>
+          <div className="flex items-center justify-around w-full max-w-sm">
             <button
               onClick={handleRetake}
               className="py-3 px-6 rounded font-semibold text-white/90 border border-white/30 touch-control hover:bg-white/10"
@@ -248,9 +314,9 @@ export const CameraProof: React.FC<CameraProofProps> = ({
             >
               Submit Proof
             </button>
-          </>
+          </div>
         ) : (
-          <>
+          <div className="flex items-center justify-around w-full max-w-sm">
             <button
               onClick={() => fileInputRef.current?.click()}
               className="p-3.5 rounded-full text-white/80 hover:bg-white/10 touch-control"
@@ -269,7 +335,7 @@ export const CameraProof: React.FC<CameraProofProps> = ({
             </button>
 
             <div className="w-12" /> {/* Balance spacer */}
-          </>
+          </div>
         )}
       </footer>
     </div>

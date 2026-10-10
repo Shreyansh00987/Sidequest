@@ -54,7 +54,7 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
 
           <button
             onClick={handlePrint}
-            className="py-2 px-3.5 rounded text-xs font-bold border-2 border-[var(--ink)] bg-[var(--paper-card)] hover:bg-[var(--paper-subtle)] flex items-center gap-1.5 touch-control"
+            className="py-2.5 px-4 btn-3d-paper text-xs font-extrabold flex items-center gap-2 touch-control shadow-xs"
           >
             <Printer className="w-4 h-4" />
             <span>Print Field Journal</span>
@@ -63,7 +63,7 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
       </div>
 
       {/* Keepsake Header */}
-      <header className="p-6 rounded-lg bg-[var(--paper-card)] border-2 border-[var(--ink)] space-y-3">
+      <header className="card-3d p-6 sm:p-8 space-y-3">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--moss-dark)]">
           <Compass className="w-4 h-4 text-[var(--moss)]" />
           <span>Official Field Naturalist Keepsake</span>
@@ -73,16 +73,16 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
           {questPack.title}
         </h1>
 
-        <div className="flex flex-wrap items-center gap-4 text-xs text-[var(--ink-secondary)] pt-2 border-t border-[var(--border)]">
-          <div className="flex items-center gap-1">
+        <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-[var(--ink-secondary)] pt-3 border-t border-[var(--border)]">
+          <div className="flex items-center gap-1.5">
             <Calendar className="w-3.5 h-3.5 text-[var(--ink-muted)]" />
             <span>{formattedDate}</span>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 text-[var(--ink-muted)]" />
             <span>{durationMinutes} minutes outdoors</span>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1.5">
             <CheckCircle2 className="w-3.5 h-3.5 text-[var(--moss)]" />
             <span>{session.proofs.length} discoveries verified</span>
           </div>
@@ -91,7 +91,7 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
 
       {/* Captured Discoveries Grid */}
       <section className="space-y-6">
-        <h2 className="text-xl font-bold text-[var(--ink)]">
+        <h2 className="text-2xl font-extrabold text-[var(--ink)]">
           Verified Field Discoveries
         </h2>
 
@@ -99,7 +99,7 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
           {session.proofs.map((proof, idx) => (
             <article
               key={idx}
-              className="p-5 rounded-lg bg-[var(--paper-sunlight)] border-2 border-[var(--border)] space-y-4 break-inside-avoid shadow-xs"
+              className="card-3d p-6 space-y-4 break-inside-avoid"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="space-y-1">
@@ -112,12 +112,12 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
                 </div>
 
                 {proof.isAdultOverride ? (
-                  <span className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded bg-[var(--paper-subtle)] text-[var(--ink-secondary)] font-medium shrink-0">
+                  <span className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full bg-[var(--paper-subtle)] text-[var(--ink-secondary)] font-bold shrink-0 border border-[var(--border)]">
                     <UserCheck className="w-3.5 h-3.5 text-[var(--moss)]" />
                     <span>Parent Confirmed</span>
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded bg-[var(--moss-subtle)] text-[var(--moss-dark)] font-bold shrink-0">
+                  <span className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full bg-[var(--moss-subtle)] text-[var(--moss-dark)] font-extrabold shrink-0 border border-[var(--moss)]">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[var(--moss)]" />
                     <span>AI Verified</span>
                   </span>
@@ -125,7 +125,7 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
               </div>
 
               {/* Photo Display */}
-              <div className="rounded overflow-hidden border border-[var(--border)] bg-black max-h-80 flex items-center justify-center">
+              <div className="rounded-xl overflow-hidden border-2 border-[var(--ink)] bg-black max-h-80 flex items-center justify-center shadow-inner">
                 <img
                   src={proof.imageDataUrl}
                   alt={`Proof for ${proof.cluePrompt}`}
@@ -134,12 +134,12 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
               </div>
 
               {/* Educational Field Note */}
-              <div className="p-3 rounded bg-[var(--paper-card)] border border-[var(--border)] text-xs text-[var(--ink)] space-y-1">
-                <div className="flex items-center gap-1.5 font-bold text-[var(--dusk)]">
-                  <BookOpen className="w-3.5 h-3.5" />
-                  <span>Field Note:</span>
+              <div className="p-3.5 rounded-lg bg-[var(--moss-subtle)] border border-[var(--moss)] text-xs text-[var(--ink)] space-y-1">
+                <div className="flex items-center gap-1.5 font-bold text-[var(--moss-dark)]">
+                  <BookOpen className="w-3.5 h-3.5 text-[var(--moss)]" />
+                  <span>Naturalist Field Note:</span>
                 </div>
-                <p className="leading-relaxed italic">
+                <p className="leading-relaxed italic font-medium">
                   {proof.fieldNote}
                 </p>
               </div>
@@ -149,17 +149,17 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
       </section>
 
       {/* Outdoor-First Concluding Banner */}
-      <footer className="p-6 rounded-lg bg-[var(--moss-subtle)] border-2 border-[var(--moss)] text-center space-y-3">
-        <h3 className="text-lg font-bold text-[var(--moss-dark)]">
+      <footer className="card-3d p-6 sm:p-8 bg-[var(--moss-subtle)] border-2 border-[var(--moss)] text-center space-y-3">
+        <h3 className="text-xl font-extrabold text-[var(--moss-dark)]">
           The walk is complete!
         </h3>
-        <p className="text-xs text-[var(--ink-secondary)] max-w-md mx-auto leading-relaxed">
+        <p className="text-sm text-[var(--ink-secondary)] max-w-md mx-auto leading-relaxed font-medium">
           Put the phone in your pocket, listen to the trees, and enjoy the rest of your time outside together.
         </p>
         <div className="pt-2 print:hidden">
           <button
             onClick={onNewWalk}
-            className="py-3 px-6 rounded font-bold text-sm bg-[var(--ink)] text-white hover:bg-[var(--blaze)] touch-control"
+            className="py-3.5 px-8 btn-3d-ink text-base touch-control"
           >
             Start Another Adventure
           </button>

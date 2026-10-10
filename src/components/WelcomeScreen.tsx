@@ -122,7 +122,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         ) : !isModelReady ? (
           <button
             onClick={onPreloadModel}
-            className="w-full py-3 px-4 rounded-lg text-xs font-extrabold border-2 border-[var(--ink)] bg-[var(--paper-card)] hover:bg-[var(--paper-subtle)] flex items-center justify-center gap-2 touch-control shadow-xs transition-transform active:scale-98"
+            className="w-full py-3.5 px-4 btn-3d-paper flex items-center justify-center gap-2 touch-control font-extrabold text-xs shadow-xs"
           >
             <Download className="w-4 h-4 text-[var(--blaze)]" />
             <span>Prepare Offline Before Leaving Home (Recommended)</span>
@@ -151,10 +151,10 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               <button
                 key={env.id}
                 onClick={() => setSelectedEnv(env.id)}
-                className={`px-3.5 py-2 rounded-lg text-xs font-bold border-2 touch-control transition-all ${
+                className={`px-3.5 py-2 text-xs font-bold touch-control transition-all ${
                   selectedEnv === env.id
-                    ? 'bg-[var(--ink)] text-white border-[var(--ink)] shadow-xs'
-                    : 'bg-[var(--paper-card)] text-[var(--ink)] border-[var(--border)] hover:bg-[var(--paper-subtle)]'
+                    ? 'btn-3d-ink'
+                    : 'btn-3d-paper'
                 }`}
               >
                 {env.label}
@@ -176,10 +176,10 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               <button
                 key={age.id}
                 onClick={() => setSelectedAge(age.id)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold border-2 touch-control transition-all ${
+                className={`px-3.5 py-1.5 text-xs font-bold touch-control transition-all ${
                   selectedAge === age.id
-                    ? 'bg-[var(--moss)] text-white border-[var(--moss)] shadow-xs'
-                    : 'bg-[var(--paper-card)] text-[var(--ink-secondary)] border-[var(--border)] hover:bg-[var(--paper-subtle)]'
+                    ? 'btn-3d-blaze'
+                    : 'btn-3d-paper'
                 }`}
               >
                 {age.label}
@@ -195,7 +195,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           <h2 className="text-xl font-extrabold text-[var(--ink)]">
             Select a Field Quest
           </h2>
-          <span className="text-xs font-bold text-[var(--moss-dark)] bg-[var(--moss-subtle)] px-2.5 py-1 rounded-full">
+          <span className="text-xs font-bold text-[var(--moss-dark)] bg-[var(--moss-subtle)] px-2.5 py-1 rounded-full border border-[var(--moss)]">
             {filteredPacks.length} Quests Available
           </span>
         </div>
@@ -205,7 +205,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             <div
               key={pack.id}
               onClick={() => onSelectQuest(pack)}
-              className="p-5 sm:p-6 rounded-xl border-2 border-[var(--border)] bg-[var(--paper-card)] hover:border-[var(--blaze)] hover:shadow-md cursor-pointer transition-all shadow-xs group active:scale-[0.99]"
+              className="card-3d p-5 sm:p-6 cursor-pointer group active:scale-[0.99] hover:border-[var(--blaze)]"
               role="button"
               tabIndex={0}
               onKeyDown={e => e.key === 'Enter' && onSelectQuest(pack)}

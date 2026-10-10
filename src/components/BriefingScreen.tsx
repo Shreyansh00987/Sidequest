@@ -28,7 +28,7 @@ export const BriefingScreen: React.FC<BriefingScreenProps> = ({
       </button>
 
       {/* Header */}
-      <header className="space-y-2 border-b border-[var(--border)] pb-4">
+      <header className="card-3d p-6 sm:p-8 space-y-2">
         <div className="inline-block text-xs font-bold uppercase tracking-wider text-[var(--moss-dark)]">
           Field Quest Briefing
         </div>
@@ -42,32 +42,32 @@ export const BriefingScreen: React.FC<BriefingScreenProps> = ({
 
       {/* Hunt Specifications */}
       <div className="grid grid-cols-3 gap-3 text-center">
-        <div className="p-3 rounded bg-[var(--paper-card)] border border-[var(--border)]">
-          <span className="text-xs text-[var(--ink-muted)] block">Total Clues</span>
-          <span className="text-lg font-bold text-[var(--ink)]">{questPack.clues.length} Stops</span>
+        <div className="p-3.5 rounded-lg bg-[var(--paper-sunlight)] border-2 border-[var(--border)] shadow-xs">
+          <span className="text-xs text-[var(--ink-muted)] block font-medium">Total Clues</span>
+          <span className="text-lg font-extrabold text-[var(--ink)]">{questPack.clues.length} Stops</span>
         </div>
-        <div className="p-3 rounded bg-[var(--paper-card)] border border-[var(--border)]">
-          <span className="text-xs text-[var(--ink-muted)] block">Est. Time</span>
-          <span className="text-lg font-bold text-[var(--ink)]">~{questPack.estimatedMinutes}m</span>
+        <div className="p-3.5 rounded-lg bg-[var(--paper-sunlight)] border-2 border-[var(--border)] shadow-xs">
+          <span className="text-xs text-[var(--ink-muted)] block font-medium">Est. Time</span>
+          <span className="text-lg font-extrabold text-[var(--ink)]">~{questPack.estimatedMinutes}m</span>
         </div>
-        <div className="p-3 rounded bg-[var(--paper-card)] border border-[var(--border)]">
-          <span className="text-xs text-[var(--ink-muted)] block">Ages</span>
-          <span className="text-lg font-bold text-[var(--ink)]">
+        <div className="p-3.5 rounded-lg bg-[var(--paper-sunlight)] border-2 border-[var(--border)] shadow-xs">
+          <span className="text-xs text-[var(--ink-muted)] block font-medium">Ages</span>
+          <span className="text-lg font-extrabold text-[var(--ink)]">
             {questPack.recommendedAge === 'all' ? 'All ages' : questPack.recommendedAge}
           </span>
         </div>
       </div>
 
       {/* Outdoor Safety Briefing */}
-      <section className="p-4 rounded bg-[#FFF7ED] border border-[#FDBA74] space-y-2">
-        <div className="flex items-center gap-2 text-[#9A3412] font-bold text-sm">
-          <ShieldAlert className="w-4 h-4 shrink-0" />
+      <section className="p-5 rounded-xl bg-[#FFF7ED] border-2 border-[#FDBA74] space-y-2 shadow-xs">
+        <div className="flex items-center gap-2 text-[#9A3412] font-extrabold text-sm">
+          <ShieldAlert className="w-5 h-5 shrink-0" />
           <span>Trail Safety Rules</span>
         </div>
-        <p className="text-xs text-[#7C2D12] leading-relaxed">
+        <p className="text-xs text-[#7C2D12] leading-relaxed font-medium">
           {questPack.safetySummary}
         </p>
-        <ul className="text-xs text-[#7C2D12] list-disc list-inside space-y-1 pt-1">
+        <ul className="text-xs text-[#7C2D12] list-disc list-inside space-y-1 pt-1 font-medium">
           <li>Stay within sight of your supervising adult.</li>
           <li>Never taste wild berries or mushrooms; AI is NOT a safety verifier.</li>
           <li>Observe living creatures with your eyes and lens only.</li>
@@ -76,9 +76,9 @@ export const BriefingScreen: React.FC<BriefingScreenProps> = ({
 
       {/* Model Readiness Notice */}
       <div
-        className="p-3.5 rounded border flex items-center justify-between text-xs"
+        className="p-3.5 rounded-xl border-2 flex items-center justify-between text-xs font-semibold shadow-xs"
         style={{
-          backgroundColor: isModelReady ? 'var(--moss-subtle)' : 'var(--paper-card)',
+          backgroundColor: isModelReady ? 'var(--moss-subtle)' : 'var(--paper-sunlight)',
           borderColor: isModelReady ? 'var(--moss)' : 'var(--border)',
         }}
       >
@@ -100,9 +100,9 @@ export const BriefingScreen: React.FC<BriefingScreenProps> = ({
       <div className="pt-2">
         <button
           onClick={onStartHunt}
-          className="w-full py-4 px-6 rounded text-white font-extrabold text-base bg-[var(--blaze)] hover:bg-[var(--blaze-dark)] shadow-md flex items-center justify-center gap-2 touch-control transition-transform active:scale-98"
+          className="w-full py-4 px-6 btn-3d-blaze text-lg flex items-center justify-center gap-2.5 touch-control"
         >
-          <Compass className="w-5 h-5" />
+          <Compass className="w-6 h-6" />
           <span>Start the Hunt</span>
         </button>
       </div>

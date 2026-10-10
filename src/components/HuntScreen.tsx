@@ -117,29 +117,36 @@ export const HuntScreen: React.FC<HuntScreenProps> = ({
         </div>
 
         {/* The High-Contrast Outdoor Clue Text */}
-        <div className="p-6 rounded-lg bg-[var(--paper-sunlight)] border-2 border-[var(--ink)] shadow-md space-y-3">
+        <div className="card-3d p-6 sm:p-8 bg-[#FFFDF9] border-2 border-[var(--ink)] border-b-6 border-b-[#0D140D] space-y-4 shadow-md text-left">
+          <div className="flex items-center justify-between text-xs font-extrabold uppercase tracking-wider text-[var(--moss-dark)]">
+            <span>Field Naturalist Clue</span>
+            <span className="font-mono bg-[var(--paper-subtle)] px-2 py-0.5 rounded border border-[var(--border)]">
+              #{session.currentClueIndex + 1}
+            </span>
+          </div>
+
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] leading-snug tracking-tight">
             {currentClue.prompt}
           </h1>
 
           {/* Hint Disclosure */}
           {showHint ? (
-            <div className="pt-3 border-t border-[var(--border)] text-xs text-[var(--moss-dark)] font-medium leading-relaxed italic bg-[var(--moss-subtle)] p-2.5 rounded">
+            <div className="text-xs text-[var(--moss-dark)] font-bold leading-relaxed italic bg-[var(--moss-subtle)] p-3 rounded-lg border border-[var(--moss)]">
               💡 {currentClue.hint}
             </div>
           ) : (
             <button
               onClick={() => setShowHint(true)}
-              className="inline-flex items-center gap-1 text-xs text-[var(--ink-muted)] hover:text-[var(--ink)] pt-2 touch-control"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--ink-secondary)] hover:text-[var(--blaze)] pt-1 touch-control"
             >
-              <HelpCircle className="w-3.5 h-3.5" />
+              <HelpCircle className="w-4 h-4 text-[var(--blaze)]" />
               <span>Need a gentle nudge?</span>
             </button>
           )}
         </div>
 
         {currentClue.safetyTip && (
-          <div className="text-xs text-[var(--ink-muted)] max-w-xs mx-auto">
+          <div className="text-xs text-[var(--ink-muted)] max-w-xs mx-auto font-medium">
             ⚠️ {currentClue.safetyTip}
           </div>
         )}
@@ -150,10 +157,10 @@ export const HuntScreen: React.FC<HuntScreenProps> = ({
         <button
           onClick={() => setIsCameraOpen(true)}
           disabled={isVerifying}
-          className="w-full py-4 px-6 rounded text-white font-extrabold text-lg bg-[var(--blaze)] hover:bg-[var(--blaze-dark)] shadow-lg flex items-center justify-center gap-3 touch-control transition-transform active:scale-98 disabled:opacity-50"
+          className="w-full py-4 px-6 btn-3d-blaze text-lg flex items-center justify-center gap-3 touch-control shadow-lg disabled:opacity-50"
         >
           <Camera className="w-6 h-6" />
-          <span>{isVerifying ? 'Analyzing...' : 'Take Proof Photo'}</span>
+          <span>{isVerifying ? 'Analyzing Evidence...' : 'Take Proof Photo'}</span>
         </button>
       </footer>
 

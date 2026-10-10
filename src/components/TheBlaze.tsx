@@ -74,20 +74,38 @@ export const TheBlaze: React.FC<TheBlazeProps> = ({
   }
 
   return (
-    <div className="flex flex-col items-center gap-2" role="status" aria-label={`The Blaze status: ${statusText}`}>
+    <div className="flex flex-col items-center gap-2.5" role="status" aria-label={`The Blaze status: ${statusText}`}>
+      {/* 3D Dimensional Trail Marker Plate */}
       <div
         style={{
           width: `${dimensions.width}px`,
           height: `${dimensions.height}px`,
           border: `${dimensions.stroke}px solid ${borderColor}`,
-          borderRadius: '4px',
+          borderBottom: `${dimensions.stroke + 2}px solid #0D140D`,
+          borderRadius: '6px',
           position: 'relative',
           overflow: 'hidden',
-          backgroundColor: 'var(--paper-card)',
-          boxShadow: '0 2px 6px rgba(31, 42, 31, 0.1)',
+          backgroundColor: '#FFFDF8',
+          boxShadow: '0 6px 14px rgba(31, 42, 31, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 3px rgba(0,0,0,0.1)',
         }}
         className="transition-colors duration-200"
       >
+        {/* Subtle top mounting brass rivet */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '3px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '4px',
+            height: '4px',
+            borderRadius: '50%',
+            backgroundColor: '#8C7752',
+            boxShadow: '0 1px 1px rgba(0,0,0,0.4)',
+            zIndex: 10,
+          }}
+        />
+
         {/* Fill level representing empirical evidence (GPU accelerated scaleY) */}
         <div
           style={{
@@ -99,6 +117,7 @@ export const TheBlaze: React.FC<TheBlazeProps> = ({
             transform: `scaleY(${fillPercentage / 100})`,
             transformOrigin: 'bottom',
             backgroundColor: fillColor,
+            boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.4)',
             transition: 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease',
           }}
         />
@@ -110,19 +129,39 @@ export const TheBlaze: React.FC<TheBlazeProps> = ({
             top: '50%',
             left: 0,
             right: 0,
-            height: '1px',
-            backgroundColor: 'rgba(31, 42, 31, 0.15)',
+            height: '1.5px',
+            backgroundColor: 'rgba(31, 42, 31, 0.25)',
+            zIndex: 5,
             pointerEvents: 'none',
+          }}
+        />
+
+        {/* Bottom mounting brass rivet */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '3px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '4px',
+            height: '4px',
+            borderRadius: '50%',
+            backgroundColor: '#8C7752',
+            boxShadow: '0 1px 1px rgba(0,0,0,0.4)',
+            zIndex: 10,
           }}
         />
       </div>
 
       {showLabel && (
         <span
-          className="font-medium tracking-tight"
+          className="font-bold tracking-tight px-2.5 py-0.5 rounded-full text-xs"
           style={{
             fontSize: dimensions.fontSize,
-            color: state === 'match' ? 'var(--moss)' : 'var(--ink-secondary)',
+            color: state === 'match' ? 'var(--moss)' : 'var(--ink)',
+            backgroundColor: state === 'match' ? 'var(--moss-subtle)' : 'var(--paper-subtle)',
+            border: `1px solid ${state === 'match' ? 'var(--moss)' : 'var(--border)'}`,
+            boxShadow: '0 1px 2px rgba(31, 42, 31, 0.05)',
           }}
         >
           {statusText}

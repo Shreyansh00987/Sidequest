@@ -70,7 +70,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
 
           <button
             onClick={onNextClue}
-            className="w-full py-4 px-6 rounded text-white font-extrabold text-base bg-[var(--blaze)] hover:bg-[var(--blaze-dark)] shadow-md flex items-center justify-center gap-2 touch-control transition-transform active:scale-98"
+            className="w-full py-4 px-6 btn-3d-blaze text-lg flex items-center justify-center gap-2.5 touch-control"
           >
             <span>{isLastClue ? 'Complete Hunt & View Keepsake' : 'Next Clue'}</span>
             <ArrowRight className="w-5 h-5" />
@@ -78,12 +78,12 @@ export const ResultView: React.FC<ResultViewProps> = ({
         </section>
       ) : outcome === 'TRY_AGAIN' ? (
         <section className="space-y-4">
-          <div className="p-4 rounded bg-[#FFF1ED] border-2 border-[var(--blaze)] space-y-2">
-            <div className="flex items-center gap-2 text-[var(--blaze-dark)] font-bold text-base">
+          <div className="card-3d p-5 bg-[#FFF1ED] border-2 border-[var(--blaze)] space-y-2">
+            <div className="flex items-center gap-2 text-[var(--blaze-dark)] font-extrabold text-base">
               <AlertCircle className="w-5 h-5 shrink-0" />
               <span>Not quite what the clue asked for</span>
             </div>
-            <p className="text-xs text-[var(--ink-secondary)] leading-relaxed">
+            <p className="text-xs text-[var(--ink-secondary)] leading-relaxed font-medium">
               The vision model didn’t see a strong match with the clue’s targets. Try finding a different subject or adjusting your distance!
             </p>
           </div>
@@ -91,7 +91,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <button
               onClick={onRetake}
-              className="py-3.5 px-4 rounded text-white font-bold bg-[var(--blaze)] hover:bg-[var(--blaze-dark)] flex items-center justify-center gap-2 touch-control"
+              className="py-3.5 px-4 btn-3d-blaze flex items-center justify-center gap-2 touch-control text-sm"
             >
               <RotateCcw className="w-4 h-4" />
               <span>Try Another Photo</span>
@@ -99,7 +99,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
 
             <button
               onClick={onAdultOverride}
-              className="py-3.5 px-4 rounded font-bold border border-[var(--ink)] bg-[var(--paper-card)] hover:bg-[var(--paper-subtle)] flex items-center justify-center gap-2 touch-control text-xs text-[var(--ink-secondary)]"
+              className="py-3.5 px-4 btn-3d-paper flex items-center justify-center gap-2 touch-control text-xs font-bold text-[var(--ink-secondary)]"
             >
               <UserCheck className="w-4 h-4 text-[var(--moss)]" />
               <span>Adult Override: “Count it!”</span>
@@ -109,12 +109,12 @@ export const ResultView: React.FC<ResultViewProps> = ({
       ) : (
         /* UNCERTAIN */
         <section className="space-y-4">
-          <div className="p-4 rounded bg-[var(--dusk-subtle)] border-2 border-[var(--dusk)] space-y-2">
-            <div className="flex items-center gap-2 text-[var(--dusk)] font-bold text-base">
+          <div className="card-3d p-5 bg-[var(--dusk-subtle)] border-2 border-[var(--dusk)] space-y-2">
+            <div className="flex items-center gap-2 text-[var(--dusk)] font-extrabold text-base">
               <AlertCircle className="w-5 h-5 shrink-0" />
               <span>Uncertain Match</span>
             </div>
-            <p className="text-xs text-[var(--ink-secondary)] leading-relaxed">
+            <p className="text-xs text-[var(--ink-secondary)] leading-relaxed font-medium">
               The model detected similarities, but the lighting, angle, or background clutter made the result ambiguous.
             </p>
           </div>
@@ -122,7 +122,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <button
               onClick={onRetake}
-              className="py-3.5 px-4 rounded text-white font-bold bg-[var(--blaze)] hover:bg-[var(--blaze-dark)] flex items-center justify-center gap-2 touch-control"
+              className="py-3.5 px-4 btn-3d-blaze flex items-center justify-center gap-2 touch-control text-sm"
             >
               <RotateCcw className="w-4 h-4" />
               <span>Retake with Better Light</span>
@@ -130,7 +130,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
 
             <button
               onClick={onAdultOverride}
-              className="py-3.5 px-4 rounded font-bold border-2 border-[var(--ink)] bg-[var(--paper-sunlight)] hover:bg-[var(--paper-subtle)] flex items-center justify-center gap-2 touch-control text-sm text-[var(--ink)]"
+              className="py-3.5 px-4 btn-3d-paper flex items-center justify-center gap-2 touch-control text-xs font-bold text-[var(--ink)]"
             >
               <UserCheck className="w-5 h-5 text-[var(--moss)]" />
               <span>Parent: “Count it!”</span>

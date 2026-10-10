@@ -30,7 +30,7 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
     : questPack.estimatedMinutes;
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-8 space-y-8 select-text">
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8 select-text">
       {/* Top Actions: Print / New Walk (hidden in print mode) */}
       <div className="print:hidden flex items-center justify-between pb-4 border-b border-[var(--border)]">
         <button
@@ -95,11 +95,11 @@ export const KeepsakeScreen: React.FC<KeepsakeScreenProps> = ({
           Verified Field Discoveries
         </h2>
 
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {session.proofs.map((proof, idx) => (
             <article
               key={idx}
-              className="card-3d p-6 space-y-4 break-inside-avoid"
+              className="card-3d p-6 space-y-4 break-inside-avoid flex flex-col justify-between"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="space-y-1">

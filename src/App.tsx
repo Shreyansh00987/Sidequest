@@ -269,7 +269,7 @@ export const App: React.FC = () => {
       />
 
       {/* Screen Router */}
-      <div className="flex-1 flex flex-col">
+      <div className="w-full flex-1 flex flex-col">
         {currentScreen === 'welcome' && (
           <WelcomeScreen
             onSelectQuest={handleSelectQuest}

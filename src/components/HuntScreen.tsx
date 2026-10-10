@@ -87,7 +87,7 @@ export const HuntScreen: React.FC<HuntScreenProps> = ({
   }
 
   return (
-    <div className="max-w-md mx-auto px-4 py-6 flex flex-col justify-between min-h-[85vh] select-none">
+    <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 py-6 flex flex-col justify-between min-h-[85vh] select-none">
       {/* Top quiet control bar: Clue progress & Pause */}
       <header className="flex items-center justify-between pb-4 border-b border-[var(--border)]">
         <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-secondary)]">
@@ -117,7 +117,7 @@ export const HuntScreen: React.FC<HuntScreenProps> = ({
         </div>
 
         {/* The High-Contrast Outdoor Clue Text */}
-        <div className="card-3d p-6 sm:p-8 bg-[#FFFDF9] border-2 border-[var(--ink)] border-b-6 border-b-[#0D140D] space-y-4 shadow-md text-left">
+        <div className="card-3d p-6 sm:p-8 bg-[#FFFDF9] border border-[var(--ink)] shadow-[0_4px_0_#0D140D] space-y-4 text-left">
           <div className="flex items-center justify-between text-xs font-extrabold uppercase tracking-wider text-[var(--moss-dark)]">
             <span>Field Naturalist Clue</span>
             <span className="font-mono bg-[var(--paper-subtle)] px-2 py-0.5 rounded border border-[var(--border)]">

@@ -16,8 +16,8 @@ export const Header: React.FC<HeaderProps> = ({
   onReturnToActiveHunt,
 }) => {
   return (
-    <header className="sticky top-0 z-30 bg-[var(--paper-sunlight)]/95 backdrop-blur-xs border-b border-[var(--border)] px-4 py-3 select-none">
-      <div className="max-w-2xl mx-auto flex items-center justify-between">
+    <header className="sticky top-0 z-30 bg-[var(--paper-sunlight)]/95 backdrop-blur-xs border-b border-[var(--border)] px-4 sm:px-6 py-3 select-none">
+      <div className="max-w-5xl mx-auto flex items-center justify-between">
         {/* Brand */}
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-[#F0681D] to-[#E8590C] text-white flex items-center justify-center font-bold shadow-md border border-[#C64600] shadow-[0_2px_0_#8A2B00]">

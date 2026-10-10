@@ -140,6 +140,17 @@
     - **Accuracy**: 7/7 (100% Pass)
   * Hardened `aiWorker.ts`: synchronous base64 Uint8Array decoding replaces network `fetch()`, auto-initializing pipeline on demand.
 
+### Milestone 12: Vercel Production Deployment (Phase 12)
+* **Date**: 2026-10-10
+* **Status**: 100% LIVE IN PRODUCTION (HTTP 200)
+* **Details**:
+  * Deployed to Vercel namespace `shreyanshagrahari14-4221` / project `sidequest`.
+  * Added `vercel.json` configuring SPA routing rewrites to `/index.html` and 1-year immutable caching for static assets.
+  * Successfully built on Vercel infrastructure (Node 24, Vite 8, PWA precache).
+  * **Production URL**: **https://sidequest-three-lake.vercel.app**
+  * **Deployment URL**: **https://sidequest-k060iqvdr-me-e80d.vercel.app**
+  * Verified live HTTP 200 response and verified `/sample-proofs/` static asset availability.
+
 ---
 
 ## Definition of Done Verification Checklist
